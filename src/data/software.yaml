@@ -7,10 +7,12 @@ software:
       - PyTorch
       - pandas
     status: "Active Development"
+    website: ""
     github: "[GitHub repository link]"
     docs: "[Documentation link]"
     demo: "[Demo link, if available]"
     featured: true
+    publications: []
 
   - id: trafficinsight360-studio
     name: "TrafficInsight360 Studio"
@@ -20,10 +22,12 @@ software:
       - Streamlit
       - Plotly
     status: "Active Development"
+    website: ""
     github: "[GitHub repository link]"
     docs: "[Documentation link]"
     demo: "[Demo link, if available]"
     featured: true
+    publications: []
 
   - id: trafficinsight360-edu
     name: "TrafficInsight360 Edu"
@@ -32,10 +36,12 @@ software:
       - Python
       - Jupyter
     status: "In Development"
+    website: ""
     github: "[GitHub repository link]"
     docs: "[Documentation link]"
     demo: "[Demo link, if available]"
     featured: true
+    publications: []
 
   - id: trafficinsight360-r
     name: "TrafficInsight360 R Wrapper"
@@ -44,10 +50,12 @@ software:
       - R
       - reticulate
     status: "Planned"
+    website: ""
     github: "[GitHub repository link]"
     docs: "[Documentation link]"
     demo: ""
     featured: false
+    publications: []
 
   - id: other-research-tools
     name: "Other Research Code & Tools"
@@ -56,7 +64,9 @@ software:
       - Python
       - various
     status: "Ongoing"
+    website: ""
     github: "[GitHub profile link]"
     docs: ""
     demo: ""
     featured: false
+    publications: []

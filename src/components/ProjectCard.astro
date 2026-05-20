@@ -6,60 +6,107 @@ export interface Props {
   funding?: string;
   duration?: string;
   website?: string;
+  github?: string;
+  docs?: string;
+  demo?: string;
   status?: string;
   tags?: string[];
+  publications?: Array<{ title: string; url: string }>;
 }
 
-const { title, description, role, funding, duration, website, status, tags = [] } = Astro.props;
+const { title, description, role, funding, duration, website, github, docs, demo, status, tags = [], publications = [] } = Astro.props;
+
+const isPlaceholder = (v?: string) => !v || v.startsWith('[');
+
+const statusStyle =
+  status === 'active' ? 'bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-300' :
+  status === 'completed' ? 'bg-navy-100 text-navy-600 dark:bg-navy-800 dark:text-navy-400' :
+  'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300';
+const statusLabel = status === 'active' ? 'Active' : status ?? '';
 ---
 
-<div class="card">
-  <div class="flex items-start justify-between mb-3">
-    <h3 class="font-display text-lg font-bold text-navy-900 dark:text-navy-50">{title}</h3>
+<div class="card flex flex-col gap-4">
+  <!-- Header -->
+  <div class="flex items-start justify-between gap-3">
+    <h3 class="font-semibold text-navy-900 dark:text-navy-50 text-base leading-snug">{title}</h3>
     {status && (
-      <span class:list={[
-        'badge',
-        status === 'active' ? 'bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300' : ''
-      ]}>
-        {status === 'active' ? 'Active' : status}
+      <span class={`text-xs font-medium px-2 py-0.5 rounded-full shrink-0 ${statusStyle}`}>
+        {statusLabel}
       </span>
     )}
   </div>
-  <p class="text-navy-600 dark:text-navy-300 text-sm mb-4 leading-relaxed">{description}</p>
 
-  <div class="space-y-2 text-sm">
-    <div class="flex items-start gap-2">
-      <span class="text-navy-400 dark:text-navy-500 shrink-0 font-medium">Role:</span>
+  <!-- Description -->
+  <p class="text-sm text-navy-600 dark:text-navy-300 leading-relaxed -mt-1">{description}</p>
+
+  <!-- Metadata -->
+  <div class="space-y-1 text-sm">
+    <div class="flex gap-2">
+      <span class="text-navy-400 dark:text-navy-500 w-16 shrink-0">Role</span>
       <span class="text-navy-700 dark:text-navy-300">{role}</span>
     </div>
-    {funding && (
-      <div class="flex items-start gap-2">
-        <span class="text-navy-400 dark:text-navy-500 shrink-0 font-medium">Funding:</span>
+    {!isPlaceholder(funding) && (
+      <div class="flex gap-2">
+        <span class="text-navy-400 dark:text-navy-500 w-16 shrink-0">Funding</span>
         <span class="text-navy-700 dark:text-navy-300">{funding}</span>
       </div>
     )}
-    {duration && (
-      <div class="flex items-start gap-2">
-        <span class="text-navy-400 dark:text-navy-500 shrink-0 font-medium">Duration:</span>
+    {!isPlaceholder(duration) && (
+      <div class="flex gap-2">
+        <span class="text-navy-400 dark:text-navy-500 w-16 shrink-0">Duration</span>
         <span class="text-navy-700 dark:text-navy-300">{duration}</span>
       </div>
     )}
   </div>
 
+  <!-- Tags -->
   {tags.length > 0 && (
-    <div class="flex flex-wrap gap-2 mt-4">
+    <div class="flex flex-wrap gap-1.5">
       {tags.map((tag: string) => (
         <span class="badge">{tag}</span>
       ))}
     </div>
   )}
 
-  {website && !website.startsWith('[') && (
-    <div class="mt-4 pt-4 border-t border-navy-100 dark:border-navy-800">
-      <a href={website} class="btn-ghost text-primary-600 dark:text-primary-400" target="_blank" rel="noopener">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-        Project Website
-      </a>
+  <!-- Links -->
+  {(!isPlaceholder(website) || !isPlaceholder(github) || !isPlaceholder(docs) || !isPlaceholder(demo) || publications.length > 0) && (
+    <div class="pt-3 border-t border-navy-100 dark:border-navy-800 flex flex-wrap gap-4">
+      {!isPlaceholder(website) && (
+        <a href={website} class="btn-ghost text-xs" target="_blank" rel="noopener">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Website
+        </a>
+      )}
+      {!isPlaceholder(github) && (
+        <a href={github} class="btn-ghost text-xs" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+      )}
+      {!isPlaceholder(docs) && (
+        <a href={docs} class="btn-ghost text-xs" target="_blank" rel="noopener">
+          <i class="fa-solid fa-book"></i> Docs
+        </a>
+      )}
+      {!isPlaceholder(demo) && (
+        <a href={demo} class="btn-ghost text-xs" target="_blank" rel="noopener">
+          <i class="fa-solid fa-play"></i> Demo
+        </a>
+      )}
+    </div>
+  )}
+
+  <!-- Related Publications -->
+  {publications.filter((p: any) => p.url && !p.url.startsWith('[')).length > 0 && (
+    <div class="text-xs text-navy-500 dark:text-navy-400">
+      <span class="font-medium text-navy-600 dark:text-navy-300">Related:</span>
+      <ul class="mt-1 space-y-0.5">
+        {publications.filter((p: any) => p.url && !p.url.startsWith('[')).map((pub: any) => (
+          <li>
+            <a href={pub.url} class="hover:text-primary-700 dark:hover:text-primary-400 hover:underline" target="_blank" rel="noopener">
+              {pub.title}
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   )}
 </div>
