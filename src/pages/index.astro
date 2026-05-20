@@ -1,40 +1,15 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import Hero from '../components/Hero.astro';
-import SectionHeader from '../components/SectionHeader.astro';
-import ResearchCard from '../components/ResearchCard.astro';
-import SoftwareCard from '../components/SoftwareCard.astro';
 import PublicationCard from '../components/PublicationCard.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import NoteCard from '../components/NoteCard.astro';
-import StatCard from '../components/StatCard.astro';
-import { getProfile, getSoftware, getPublications, getProjects, getTravel } from '../lib/data';
+import { getProfile, getSoftware, getPublications } from '../lib/data';
 
 const profile = getProfile();
 const software = getSoftware();
 const publications = getPublications();
-const projects = getProjects();
-const travel = getTravel();
 
-const featuredSoftware = software.software.filter((s: any) => s.featured);
-const featuredPubs = publications.publications.filter((p: any) => p.featured);
-const featuredProjects = projects.projects.slice(0, 3);
-
-const researchThemes = [
-  { title: 'Traffic Data Imputation', icon: 'imputation', description: 'Reconstructing missing traffic data using spatiotemporal deep learning methods.' },
-  { title: 'Traffic Anomaly Detection', icon: 'anomaly', description: 'Identifying unusual patterns and events in traffic data streams.' },
-  { title: 'Traffic Forecasting', icon: 'forecasting', description: 'Predicting future traffic states with advanced time-series models.' },
-  { title: 'Spatiotemporal Deep Learning', icon: 'deeplearning', description: 'Graph neural networks and attention mechanisms for traffic networks.' },
-  { title: 'Foundation Models for Traffic', icon: 'foundation', description: 'Large-scale pre-trained models for generalizable traffic intelligence.' },
-  { title: 'CCAM & Digital Twins', icon: 'ccam', description: 'Connected cooperative autonomous mobility and digital twin systems.' },
-  { title: 'Public Transport Analytics', icon: 'publictransport', description: 'Data-driven analysis of public transport systems and operations.' },
-];
-
-// Sample note for preview
-const sampleNotes = [
-  { title: '[Sample Note: Getting Started with Traffic Data Imputation]', date: '2025-01-15', category: 'Technical Note', tags: ['traffic data', 'imputation', 'tutorial'], summary: 'A technical overview of common approaches to traffic data imputation, including matrix factorization and deep learning methods.', slug: 'sample-note' },
-  { title: '[Sample Note: Conference Reflections — TRB 2025]', date: '2025-01-10', category: 'Conference Reflection', tags: ['conference', 'TRB'], summary: 'Reflections on key themes, interesting papers, and takeaways from the TRB Annual Meeting.', slug: 'sample-note-2' },
-];
+const featuredSoftware = software.software.filter((s: any) => s.featured).slice(0, 3);
+const featuredPubs = publications.publications.filter((p: any) => p.featured).slice(0, 3);
 ---
 
 <PageLayout title="Home" description="Personal academic website of Jyotirmaya Ijaradar — Researcher in Traffic Data Science & AI for Mobility.">
@@ -42,44 +17,55 @@ const sampleNotes = [
   <!-- Hero -->
   <Hero />
 
-  <!-- Research Interests -->
-  <section class="py-16 px-4">
-    <div class="max-w-6xl mx-auto">
-      <SectionHeader title="Research Interests" subtitle="Core themes driving my work" href="/research/" />
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {researchThemes.map(theme => (
-          <ResearchCard title={theme.title} description={theme.description} icon={theme.icon} />
+  <div class="max-w-4xl mx-auto px-6 pb-20 space-y-16">
+
+    <!-- About -->
+    <section>
+      <h2 class="section-title">About</h2>
+      <p class="text-navy-600 dark:text-navy-400 leading-relaxed mb-5 max-w-2xl">
+        {profile.bio_short}
+      </p>
+      <div class="flex flex-wrap gap-2">
+        {profile.research_interests.map((interest: string) => (
+          <span class="text-sm px-3 py-1 rounded-full border border-navy-200 dark:border-navy-700 text-navy-600 dark:text-navy-400">
+            {interest}
+          </span>
         ))}
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Featured Software -->
-  <section class="py-16 px-4 bg-white/50 dark:bg-navy-900/50">
-    <div class="max-w-6xl mx-auto">
-      <SectionHeader title="Software & Tools" subtitle="Open-source research software" href="/software/" />
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {featuredSoftware.map((sw: any) => (
-          <SoftwareCard
-            name={sw.name}
-            description={sw.description}
-            tech_stack={sw.tech_stack}
-            status={sw.status}
-            github={sw.github}
-            docs={sw.docs}
-            demo={sw.demo}
-            featured={sw.featured}
-          />
-        ))}
+    <!-- News -->
+    <section>
+      <h2 class="section-title">News</h2>
+      <ul class="space-y-3 text-sm text-navy-600 dark:text-navy-400">
+        <li class="flex gap-3">
+          <span class="shrink-0 text-navy-400 dark:text-navy-500 tabular-nums">2025-01</span>
+          <span>[Sample] Starting new research project on foundation models for traffic data.</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="shrink-0 text-navy-400 dark:text-navy-500 tabular-nums">2025-01</span>
+          <span>[Sample] Paper accepted at [Conference Name].</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="shrink-0 text-navy-400 dark:text-navy-500 tabular-nums">2024-12</span>
+          <span>[Sample] Presented research at TRB Annual Meeting, Washington D.C.</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="shrink-0 text-navy-400 dark:text-navy-500 tabular-nums">2024-11</span>
+          <span>[Sample] Released TrafficInsight360 v1.0 on GitHub.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Selected Publications -->
+    <section>
+      <div class="flex items-baseline justify-between mb-2">
+        <h2 class="section-title">Selected Publications</h2>
+        <a href="/publications/" class="text-sm text-primary-700 dark:text-primary-400 hover:underline">
+          All publications →
+        </a>
       </div>
-    </div>
-  </section>
-
-  <!-- Selected Publications -->
-  <section class="py-16 px-4">
-    <div class="max-w-6xl mx-auto">
-      <SectionHeader title="Selected Publications" subtitle="Recent and featured works" href="/publications/" />
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div>
         {featuredPubs.map((pub: any) => (
           <PublicationCard
             id={pub.id}
@@ -97,83 +83,38 @@ const sampleNotes = [
           />
         ))}
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Project Highlights -->
-  <section class="py-16 px-4 bg-white/50 dark:bg-navy-900/50">
-    <div class="max-w-6xl mx-auto">
-      <SectionHeader title="Project Highlights" subtitle="Funded and institutional research projects" href="/projects/" />
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {featuredProjects.map((proj: any) => (
-          <ProjectCard
-            title={proj.title}
-            description={proj.description}
-            role={proj.role}
-            funding={proj.funding}
-            duration={proj.duration}
-            website={proj.website}
-            status={proj.status}
-            tags={proj.tags}
-          />
+    <!-- Software -->
+    <section>
+      <h2 class="section-title">Software</h2>
+      <div class="space-y-4">
+        {featuredSoftware.map((sw: any) => (
+          <div class="flex items-start justify-between gap-4 py-3 border-b border-navy-100 dark:border-navy-800 last:border-0">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="font-medium text-navy-900 dark:text-navy-50 text-sm">{sw.name}</span>
+                <span class="text-xs px-1.5 py-0.5 rounded bg-navy-100 dark:bg-navy-800 text-navy-500 dark:text-navy-400">
+                  {sw.status}
+                </span>
+              </div>
+              <p class="text-sm text-navy-500 dark:text-navy-400">{sw.description}</p>
+              <div class="flex gap-1 mt-1 flex-wrap">
+                {sw.tech_stack.map((t: string) => (
+                  <span class="text-xs text-navy-400 dark:text-navy-500">{t}</span>
+                ))}
+              </div>
+            </div>
+            {sw.github && !sw.github.startsWith('[') && (
+              <a href={sw.github} target="_blank" rel="noopener" aria-label={`${sw.name} on GitHub`} class="shrink-0 icon-link text-lg mt-0.5">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            )}
+          </div>
         ))}
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Research Notes Preview -->
-  <section class="py-16 px-4">
-    <div class="max-w-6xl mx-auto">
-      <SectionHeader title="Research Notes" subtitle="Technical posts, reflections, and ideas" href="/research-notes/" />
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {sampleNotes.map(note => (
-          <NoteCard
-            title={note.title}
-            date={note.date}
-            category={note.category}
-            tags={note.tags}
-            summary={note.summary}
-            slug={note.slug}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Beyond Research / Travel Stats Preview -->
-  <section class="py-16 px-4 bg-white/50 dark:bg-navy-900/50">
-    <div class="max-w-6xl mx-auto">
-      <SectionHeader title="Beyond Research" subtitle="Travel, photography, and community" href="/beyond-research/" />
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <StatCard value={travel.stats.countries_visited} label="Countries Visited" />
-        <StatCard value={travel.stats.cities_visited} label="Cities Visited" />
-        <StatCard value="100+" label="Wikipedia Edits" />
-        <StatCard value="—" label="Photos Captured" />
-      </div>
-      <div class="text-center">
-        <a href="/beyond-research/" class="btn-primary">
-          Explore More
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact CTA -->
-  <section class="py-20 px-4">
-    <div class="max-w-2xl mx-auto text-center">
-      <h2 class="section-title">Get in Touch</h2>
-      <p class="text-navy-500 dark:text-navy-400 text-lg mb-8">
-        Interested in collaboration, open topics, or just want to say hello?
-      </p>
-      <div class="flex flex-wrap justify-center gap-3">
-        <a href={`mailto:${profile.email}`} class="btn-primary">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          Email Me
-        </a>
-        <a href="/contact/" class="btn-outline">All Contact Options</a>
-      </div>
-    </div>
-  </section>
+  </div>
 
 </PageLayout>
