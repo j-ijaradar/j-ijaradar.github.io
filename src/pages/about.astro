@@ -6,23 +6,19 @@ const profile = getProfile();
 const skills = getSkills();
 ---
 
-<PageLayout title="About" description="Learn about Jyotirmaya Ijaradar — researcher in traffic data science and AI for mobility.">
-
-  <div class="page-header">
-    <div class="max-w-4xl mx-auto">
-      <h1 class="section-title text-4xl">About Me</h1>
-      <p class="section-subtitle">Researcher, developer, and lifelong learner</p>
-    </div>
-  </div>
-
-  <div class="page-container">
+<PageLayout
+  title="About"
+  description="Learn about Jyotirmaya Ijaradar — researcher in traffic data science and AI for mobility."
+  pageTitle="About Me"
+  pageSubtitle="Researcher, developer, and lifelong learner"
+>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
       <!-- Main content -->
       <div class="lg:col-span-2 space-y-10">
         <!-- Bio -->
         <section>
           <h2 class="font-display text-xl font-bold text-navy-900 dark:text-navy-50 mb-4">Professional Biography</h2>
-          <div class="prose-custom">
+          <div class="text-navy-600 dark:text-navy-300 leading-relaxed">
             <p>{profile.bio_long}</p>
           </div>
         </section>
@@ -69,7 +65,7 @@ const skills = getSkills();
         <!-- Personal Note -->
         <section>
           <h2 class="font-display text-xl font-bold text-navy-900 dark:text-navy-50 mb-4">Beyond Research</h2>
-          <div class="prose-custom">
+          <div class="text-navy-600 dark:text-navy-300 leading-relaxed">
             <p>{profile.personal_note}</p>
           </div>
         </section>
@@ -133,6 +129,5 @@ const skills = getSkills();
         </div>
       </div>
     </div>
-  </div>
 
 </PageLayout>

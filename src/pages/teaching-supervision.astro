@@ -1,6 +1,5 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import StatsBar from '../components/StatsBar.astro';
 import { getTeaching, getOpenTopics } from '../lib/data';
 
 const teaching   = getTeaching();
@@ -19,231 +18,215 @@ const availableTopics =
   (openTopics.software_dev_topics?.filter((t: any) => t.status === 'available').length ?? 0);
 
 const pageStats = [
-  { value: teaching.courses?.length ?? 0,  label: 'Courses' },
-  { value: totalStudents || '—',            label: 'Students Supervised' },
-  { value: availableTopics || '—',          label: 'Open Topics' },
-  { value: '—',                             label: 'Teaching Hours' },
+  { value: teaching.courses?.length ?? 0, label: 'Courses' },
+  { value: totalStudents || '—',           label: 'Students Supervised' },
+  { value: availableTopics || '—',         label: 'Open Topics' },
+  { value: '—',                            label: 'Teaching Hours' },
 ];
 ---
 
-<PageLayout title="Teaching & Supervision" description="Courses, student supervision, and open thesis topics.">
+<PageLayout
+  title="Teaching & Supervision"
+  description="Courses, student supervision, and open thesis topics."
+  pageTitle="Teaching & Supervision"
+  pageSubtitle="Courses, student supervision, open topics, and teaching materials"
+  stats={pageStats}
+>
 
-  <div class="page-header">
-    <div class="max-w-4xl mx-auto">
-      <h1 class="text-3xl font-semibold text-navy-900 dark:text-navy-50 mb-1">Teaching & Supervision</h1>
-      <p class="text-navy-500 dark:text-navy-400">Courses, student supervision, open topics, and teaching materials</p>
+  <!-- Courses -->
+  <section class="mb-14">
+    <h2 class="section-heading">Courses</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {teaching.courses.map((course: any) => (
+        <div class="card">
+          <h3 class="font-semibold text-navy-900 dark:text-navy-50 mb-2">{course.title}</h3>
+          <p class="text-sm text-navy-600 dark:text-navy-300 mb-3">{course.description}</p>
+          <div class="flex flex-wrap gap-4 text-xs text-navy-400 dark:text-navy-500">
+            <span>Role: {course.role}</span>
+            <span>Semester: {course.semester}</span>
+            <span>{course.institution}</span>
+          </div>
+          {course.materials && !course.materials.startsWith('[') && (
+            <a href={course.materials} class="btn-ghost text-xs mt-3" target="_blank">
+              <i class="fa-solid fa-book text-xs"></i> Course Materials
+            </a>
+          )}
+        </div>
+      ))}
     </div>
-  </div>
+  </section>
 
-  <div class="page-container">
+  <!-- Student Supervision -->
+  <section class="mb-14">
+    <h2 class="section-heading">Student Supervision</h2>
+    <div class="space-y-8">
 
-    <StatsBar stats={pageStats} />
-
-    <!-- Courses -->
-    <section class="mb-14">
-      <h2 class="section-heading">Courses</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {teaching.courses.map((course: any) => (
-          <div class="card">
-            <h3 class="font-semibold text-navy-900 dark:text-navy-50 mb-2">{course.title}</h3>
-            <p class="text-sm text-navy-600 dark:text-navy-300 mb-3">{course.description}</p>
-            <div class="flex flex-wrap gap-4 text-xs text-navy-400 dark:text-navy-500">
-              <span>Role: {course.role}</span>
-              <span>Semester: {course.semester}</span>
-              <span>{course.institution}</span>
+      <div>
+        <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Master Theses</h3>
+        <div class="space-y-2">
+          {teaching.supervision.master_theses.map((thesis: any) => (
+            <div class="card p-4 flex items-start justify-between gap-4">
+              <div>
+                <p class="font-medium text-navy-900 dark:text-navy-50 text-sm">{thesis.title}</p>
+                <p class="text-xs text-navy-400 dark:text-navy-500 mt-1">{thesis.student} · {thesis.year}</p>
+              </div>
+              <span class:list={[
+                'text-xs font-medium px-2 py-0.5 rounded-full shrink-0',
+                thesis.status === 'Ongoing'   ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300' :
+                thesis.status === 'Completed' ? 'bg-primary-100 text-primary-800 dark:bg-primary-950 dark:text-primary-300' :
+                'bg-navy-100 text-navy-600 dark:bg-navy-800 dark:text-navy-400'
+              ]}>
+                {thesis.status}
+              </span>
             </div>
-            {course.materials && !course.materials.startsWith('[') && (
-              <a href={course.materials} class="btn-ghost text-xs mt-3" target="_blank">
-                <i class="fa-solid fa-book text-xs"></i> Course Materials
-              </a>
-            )}
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </section>
 
-    <!-- Student Supervision -->
-    <section class="mb-14">
-      <h2 class="section-heading">Student Supervision</h2>
-      <div class="space-y-8">
-
-        <!-- Master Theses -->
-        <div>
-          <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Master Theses</h3>
-          <div class="space-y-2">
-            {teaching.supervision.master_theses.map((thesis: any) => (
-              <div class="card p-4 flex items-start justify-between gap-4">
-                <div>
-                  <p class="font-medium text-navy-900 dark:text-navy-50 text-sm">{thesis.title}</p>
-                  <p class="text-xs text-navy-400 dark:text-navy-500 mt-1">{thesis.student} · {thesis.year}</p>
-                </div>
-                <span class:list={[
-                  'text-xs font-medium px-2 py-0.5 rounded-full shrink-0',
-                  thesis.status === 'Ongoing'   ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300' :
-                  thesis.status === 'Completed' ? 'bg-primary-100 text-primary-800 dark:bg-primary-950 dark:text-primary-300' :
-                  'bg-navy-100 text-navy-600 dark:bg-navy-800 dark:text-navy-400'
-                ]}>
-                  {thesis.status}
-                </span>
+      <div>
+        <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Bachelor Theses</h3>
+        <div class="space-y-2">
+          {teaching.supervision.bachelor_theses.map((thesis: any) => (
+            <div class="card p-4 flex items-start justify-between gap-4">
+              <div>
+                <p class="font-medium text-navy-900 dark:text-navy-50 text-sm">{thesis.title}</p>
+                <p class="text-xs text-navy-400 dark:text-navy-500 mt-1">{thesis.student} · {thesis.year}</p>
               </div>
-            ))}
-          </div>
+              <span class:list={[
+                'text-xs font-medium px-2 py-0.5 rounded-full shrink-0',
+                thesis.status === 'Ongoing'   ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300' :
+                thesis.status === 'Completed' ? 'bg-primary-100 text-primary-800 dark:bg-primary-950 dark:text-primary-300' :
+                'bg-navy-100 text-navy-600 dark:bg-navy-800 dark:text-navy-400'
+              ]}>
+                {thesis.status}
+              </span>
+            </div>
+          ))}
         </div>
-
-        <!-- Bachelor Theses -->
-        <div>
-          <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Bachelor Theses</h3>
-          <div class="space-y-2">
-            {teaching.supervision.bachelor_theses.map((thesis: any) => (
-              <div class="card p-4 flex items-start justify-between gap-4">
-                <div>
-                  <p class="font-medium text-navy-900 dark:text-navy-50 text-sm">{thesis.title}</p>
-                  <p class="text-xs text-navy-400 dark:text-navy-500 mt-1">{thesis.student} · {thesis.year}</p>
-                </div>
-                <span class:list={[
-                  'text-xs font-medium px-2 py-0.5 rounded-full shrink-0',
-                  thesis.status === 'Ongoing'   ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300' :
-                  thesis.status === 'Completed' ? 'bg-primary-100 text-primary-800 dark:bg-primary-950 dark:text-primary-300' :
-                  'bg-navy-100 text-navy-600 dark:bg-navy-800 dark:text-navy-400'
-                ]}>
-                  {thesis.status}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <!-- Student Projects -->
-        <div>
-          <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Student Research Projects</h3>
-          <div class="space-y-2">
-            {teaching.supervision.student_projects.map((proj: any) => (
-              <div class="card p-4 flex items-start justify-between gap-4">
-                <div>
-                  <p class="font-medium text-navy-900 dark:text-navy-50 text-sm">{proj.title}</p>
-                  <p class="text-xs text-navy-400 dark:text-navy-500 mt-1">{proj.student} · {proj.year}</p>
-                </div>
-                <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-navy-100 text-navy-600 dark:bg-navy-800 dark:text-navy-400 shrink-0">{proj.status}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <!-- SHK/Tutor -->
-        <div>
-          <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">SHK / Tutor Supervision</h3>
-          <div class="space-y-2">
-            {teaching.supervision.shk_tutor.map((shk: any) => (
-              <div class="card p-4">
-                <p class="font-medium text-navy-900 dark:text-navy-50 text-sm">{shk.name} — {shk.role}</p>
-                <p class="text-xs text-navy-400 dark:text-navy-500 mt-1">{shk.topic} · {shk.period}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
       </div>
-    </section>
 
-    <!-- Open Topics -->
-    <section class="mb-14">
-      <h2 class="section-heading">Open Topics</h2>
-      <p class="text-sm text-navy-500 dark:text-navy-400 mb-6">
-        Interested students are welcome to reach out.
-      </p>
-      <div class="space-y-8">
-
-        <!-- Thesis Topics -->
-        <div>
-          <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Thesis Topics</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {openTopics.thesis_topics.map((topic: any) => (
-              <div class="card border-l-4 border-l-primary-500">
-                <div class="flex items-start justify-between mb-2">
-                  <span class="badge text-xs">{topic.type}</span>
-                  <span class:list={[
-                    'text-xs font-medium px-2 py-0.5 rounded-full',
-                    topic.status === 'available' ? 'bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-300' : 'bg-navy-100 text-navy-500'
-                  ]}>
-                    {topic.status === 'available' ? 'Available' : topic.status}
-                  </span>
-                </div>
-                <h4 class="font-semibold text-navy-900 dark:text-navy-50 text-sm mb-2">{topic.title}</h4>
-                <p class="text-xs text-navy-500 dark:text-navy-400 mb-2">{topic.description}</p>
-                <p class="text-xs text-navy-400 dark:text-navy-500">Requirements: {topic.requirements}</p>
+      <div>
+        <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Student Research Projects</h3>
+        <div class="space-y-2">
+          {teaching.supervision.student_projects.map((proj: any) => (
+            <div class="card p-4 flex items-start justify-between gap-4">
+              <div>
+                <p class="font-medium text-navy-900 dark:text-navy-50 text-sm">{proj.title}</p>
+                <p class="text-xs text-navy-400 dark:text-navy-500 mt-1">{proj.student} · {proj.year}</p>
               </div>
-            ))}
-          </div>
+              <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-navy-100 text-navy-600 dark:bg-navy-800 dark:text-navy-400 shrink-0">{proj.status}</span>
+            </div>
+          ))}
         </div>
+      </div>
 
-        <!-- Research Assistant -->
-        <div>
-          <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Research Assistant Positions</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {openTopics.research_assistant_topics.map((topic: any) => (
-              <div class="card border-l-4 border-l-accent-600">
+      <div>
+        <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">SHK / Tutor Supervision</h3>
+        <div class="space-y-2">
+          {teaching.supervision.shk_tutor.map((shk: any) => (
+            <div class="card p-4">
+              <p class="font-medium text-navy-900 dark:text-navy-50 text-sm">{shk.name} — {shk.role}</p>
+              <p class="text-xs text-navy-400 dark:text-navy-500 mt-1">{shk.topic} · {shk.period}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Open Topics -->
+  <section class="mb-14">
+    <h2 class="section-heading">Open Topics</h2>
+    <p class="text-sm text-navy-500 dark:text-navy-400 mb-6">Interested students are welcome to reach out.</p>
+
+    <div class="space-y-8">
+
+      <div>
+        <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Thesis Topics</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {openTopics.thesis_topics.map((topic: any) => (
+            <div class="card border-l-4 border-l-primary-500">
+              <div class="flex items-start justify-between mb-2">
+                <span class="badge text-xs">{topic.type}</span>
                 <span class:list={[
-                  'text-xs font-medium px-2 py-0.5 rounded-full inline-block mb-2',
+                  'text-xs font-medium px-2 py-0.5 rounded-full',
                   topic.status === 'available' ? 'bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-300' : 'bg-navy-100 text-navy-500'
                 ]}>
                   {topic.status === 'available' ? 'Available' : topic.status}
                 </span>
-                <h4 class="font-semibold text-navy-900 dark:text-navy-50 text-sm mb-2">{topic.title}</h4>
-                <p class="text-xs text-navy-500 dark:text-navy-400 mb-2">{topic.description}</p>
-                <p class="text-xs text-navy-400 dark:text-navy-500">Requirements: {topic.requirements}</p>
               </div>
-            ))}
-          </div>
+              <h4 class="font-semibold text-navy-900 dark:text-navy-50 text-sm mb-2">{topic.title}</h4>
+              <p class="text-xs text-navy-500 dark:text-navy-400 mb-2">{topic.description}</p>
+              <p class="text-xs text-navy-400 dark:text-navy-500">Requirements: {topic.requirements}</p>
+            </div>
+          ))}
         </div>
-
-        <!-- Mini Projects -->
-        <div>
-          <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Mini Projects</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {openTopics.mini_projects.map((topic: any) => (
-              <div class="card border-l-4 border-l-blue-500">
-                <h4 class="font-semibold text-navy-900 dark:text-navy-50 text-sm mb-2">{topic.title}</h4>
-                <p class="text-xs text-navy-500 dark:text-navy-400 mb-2">{topic.description}</p>
-                <p class="text-xs text-navy-400 dark:text-navy-500">Duration: {topic.duration}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <!-- Software Dev Topics -->
-        <div>
-          <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Software Development Topics</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {openTopics.software_dev_topics.map((topic: any) => (
-              <div class="card border-l-4 border-l-amber-500">
-                <h4 class="font-semibold text-navy-900 dark:text-navy-50 text-sm mb-2">{topic.title}</h4>
-                <p class="text-xs text-navy-500 dark:text-navy-400 mb-2">{topic.description}</p>
-                {topic.tech_stack && (
-                  <div class="flex flex-wrap gap-1 mt-2">
-                    {topic.tech_stack.map((t: string) => (
-                      <span class="text-xs font-mono px-2 py-0.5 rounded bg-navy-100 dark:bg-navy-800 text-navy-500">{t}</span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
       </div>
-    </section>
 
-    <!-- Teaching Materials -->
-    <section>
-      <h2 class="section-heading">Teaching Materials</h2>
-      <div class="card">
-        <p class="text-navy-500 dark:text-navy-400 text-sm">
-          Teaching materials, lecture slides, and tutorial notebooks will be linked here as they become available.
-          Please contact me directly for specific resources.
-        </p>
+      <div>
+        <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Research Assistant Positions</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {openTopics.research_assistant_topics.map((topic: any) => (
+            <div class="card border-l-4 border-l-accent-600">
+              <span class:list={[
+                'text-xs font-medium px-2 py-0.5 rounded-full inline-block mb-2',
+                topic.status === 'available' ? 'bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-300' : 'bg-navy-100 text-navy-500'
+              ]}>
+                {topic.status === 'available' ? 'Available' : topic.status}
+              </span>
+              <h4 class="font-semibold text-navy-900 dark:text-navy-50 text-sm mb-2">{topic.title}</h4>
+              <p class="text-xs text-navy-500 dark:text-navy-400 mb-2">{topic.description}</p>
+              <p class="text-xs text-navy-400 dark:text-navy-500">Requirements: {topic.requirements}</p>
+            </div>
+          ))}
+        </div>
       </div>
-    </section>
 
-  </div>
+      <div>
+        <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Mini Projects</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {openTopics.mini_projects.map((topic: any) => (
+            <div class="card border-l-4 border-l-blue-500">
+              <h4 class="font-semibold text-navy-900 dark:text-navy-50 text-sm mb-2">{topic.title}</h4>
+              <p class="text-xs text-navy-500 dark:text-navy-400 mb-2">{topic.description}</p>
+              <p class="text-xs text-navy-400 dark:text-navy-500">Duration: {topic.duration}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Software Development Topics</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {openTopics.software_dev_topics.map((topic: any) => (
+            <div class="card border-l-4 border-l-amber-500">
+              <h4 class="font-semibold text-navy-900 dark:text-navy-50 text-sm mb-2">{topic.title}</h4>
+              <p class="text-xs text-navy-500 dark:text-navy-400 mb-2">{topic.description}</p>
+              {topic.tech_stack && (
+                <div class="flex flex-wrap gap-1 mt-2">
+                  {topic.tech_stack.map((t: string) => (
+                    <span class="text-xs font-mono px-2 py-0.5 rounded bg-navy-100 dark:bg-navy-800 text-navy-500">{t}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Teaching Materials -->
+  <section>
+    <h2 class="section-heading">Teaching Materials</h2>
+    <div class="card">
+      <p class="text-navy-500 dark:text-navy-400 text-sm">
+        Teaching materials, lecture slides, and tutorial notebooks will be linked here as they become available.
+        Please contact me directly for specific resources.
+      </p>
+    </div>
+  </section>
 
 </PageLayout>

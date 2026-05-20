@@ -8,16 +8,12 @@ const featuredTools = software.software.filter((s: any) => s.featured);
 const otherTools = software.software.filter((s: any) => !s.featured);
 ---
 
-<PageLayout title="Software & Tools" description="Research software, packages, and tools developed by Jyotirmaya Ijaradar.">
-
-  <div class="page-header">
-    <div class="max-w-4xl mx-auto">
-      <h1 class="section-title text-4xl">Software & Tools</h1>
-      <p class="section-subtitle">Research software, packages, dashboards, and open-source tools</p>
-    </div>
-  </div>
-
-  <div class="page-container">
+<PageLayout
+  title="Software & Tools"
+  description="Research software, packages, and tools developed by Jyotirmaya Ijaradar."
+  pageTitle="Software & Tools"
+  pageSubtitle="Research software, packages, dashboards, and open-source tools"
+>
     <div class="max-w-3xl mb-10">
       <p class="text-navy-600 dark:text-navy-300 leading-relaxed">
         I develop open-source tools and software for traffic data science. These range from comprehensive 
@@ -66,6 +62,5 @@ const otherTools = software.software.filter((s: any) => !s.featured);
         </div>
       </section>
     )}
-  </div>
 
 </PageLayout>

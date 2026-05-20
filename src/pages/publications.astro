@@ -18,16 +18,12 @@ const years = Object.keys(pubsByYear).map(Number).sort((a, b) => b - a);
 const allTopics = [...new Set(allPubs.flatMap((p: any) => p.topics || []))].sort();
 ---
 
-<PageLayout title="Publications" description="Publications by Jyotirmaya Ijaradar in traffic data science and AI for mobility.">
-
-  <div class="page-header">
-    <div class="max-w-4xl mx-auto">
-      <h1 class="text-3xl font-semibold text-navy-900 dark:text-navy-50 mb-1">Publications</h1>
-      <p class="text-navy-500 dark:text-navy-400">Journal articles, conference papers, and preprints</p>
-    </div>
-  </div>
-
-  <div class="page-container">
+<PageLayout
+  title="Publications"
+  description="Publications by Jyotirmaya Ijaradar in traffic data science and AI for mobility."
+  pageTitle="Publications"
+  pageSubtitle="Journal articles, conference papers, and preprints"
+>
 
     <!-- Topic Filters -->
     {allTopics.length > 0 && (
@@ -74,7 +70,6 @@ const allTopics = [...new Set(allPubs.flatMap((p: any) => p.topics || []))].sort
       </section>
     ))}
 
-  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
