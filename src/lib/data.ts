@@ -45,3 +45,7 @@ export function getVolunteering() {
 export function getSkills() {
   return loadYaml('skills.yaml');
 }
+
+export function getNews() {
+  return loadYaml('news.yaml');
+}

@@ -5,12 +5,15 @@ projects:
     role: "[My role]"
     funding: "[Funding body]"
     duration: "[Project duration]"
-    website: "[Project website link]"
     status: active
+    website: "[Project website link]"
+    github: ""
+    docs: ""
+    demo: ""
     tags:
       - traffic data science
       - AI
-    outputs: []
+    publications: []
 
   - id: jena5g
     title: "Jena5G"
@@ -18,12 +21,15 @@ projects:
     role: "[My role]"
     funding: "[Funding body]"
     duration: "[Project duration]"
-    website: "[Project website link]"
     status: active
+    website: "[Project website link]"
+    github: ""
+    docs: ""
+    demo: ""
     tags:
       - 5G
       - connected mobility
-    outputs: []
+    publications: []
 
   - id: vamos-system-maintenance
     title: "VAMOS System Maintenance"
@@ -31,12 +37,15 @@ projects:
     role: "[My role]"
     funding: "[Funding body / Institution]"
     duration: "[Project duration]"
-    website: "[Project website link]"
     status: active
+    website: "[Project website link]"
+    github: ""
+    docs: ""
+    demo: ""
     tags:
       - system maintenance
       - traffic systems
-    outputs: []
+    publications: []
 
   - id: nationalpark
     title: "NationalPark"
@@ -44,9 +53,12 @@ projects:
     role: "[My role]"
     funding: "[Funding body]"
     duration: "[Project duration]"
-    website: "[Project website link]"
     status: active
+    website: "[Project website link]"
+    github: ""
+    docs: ""
+    demo: ""
     tags:
       - mobility
       - national park
-    outputs: []
+    publications: []

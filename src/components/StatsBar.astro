@@ -1,0 +1,26 @@
+---
+export interface Props {
+  stats: Array<{ value: string | number; label: string }>;
+}
+
+const { stats } = Astro.props;
+
+const tileStyles = [
+  { bg: 'bg-primary-50 dark:bg-primary-950', val: 'text-primary-800 dark:text-primary-200', label: 'text-primary-600 dark:text-primary-400' },
+  { bg: 'bg-accent-50 dark:bg-accent-950',   val: 'text-accent-800 dark:text-accent-200',   label: 'text-accent-700 dark:text-accent-400' },
+  { bg: 'bg-blue-50 dark:bg-blue-950',       val: 'text-blue-800 dark:text-blue-200',       label: 'text-blue-600 dark:text-blue-400' },
+  { bg: 'bg-amber-50 dark:bg-amber-950',     val: 'text-amber-800 dark:text-amber-200',     label: 'text-amber-700 dark:text-amber-400' },
+];
+---
+
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
+  {stats.map((stat, i) => {
+    const style = tileStyles[i % tileStyles.length];
+    return (
+      <div class={`${style.bg} rounded-lg px-4 py-4 text-center`}>
+        <div class={`text-2xl font-bold ${style.val}`}>{stat.value}</div>
+        <div class={`text-xs mt-0.5 ${style.label}`}>{stat.label}</div>
+      </div>
+    );
+  })}
+</div>

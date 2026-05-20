@@ -1,0 +1,35 @@
+news:
+  - id: event-1
+    type: event
+    date: "2025-03"
+    title: "[Sample Event: Presenting at IEEE ITSC 2025]"
+    description: "[Conference venue, City, Country]"
+    link: ""
+
+  - id: event-2
+    type: event
+    date: "2025-06"
+    title: "[Sample Event: Talk at Workshop on Traffic Foundation Models]"
+    description: "[Workshop details and location]"
+    link: ""
+
+  - id: update-1
+    type: update
+    date: "2025-02"
+    title: "[Sample: Joined [Project Name] as researcher]"
+    description: ""
+    link: ""
+
+  - id: update-2
+    type: update
+    date: "2024-12"
+    title: "[Sample: Released TrafficInsight360 v1.0 on GitHub]"
+    description: "Open-source traffic data science toolkit"
+    link: ""
+
+  - id: award-1
+    type: award
+    date: "2024-11"
+    title: "[Sample: Best Paper Award at [Conference Name]]"
+    description: ""
+    link: ""

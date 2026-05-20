@@ -1,44 +1,169 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import StatsBar from '../components/StatsBar.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { getProjects } from '../lib/data';
+import SoftwareCard from '../components/SoftwareCard.astro';
+import { getProjects, getSoftware } from '../lib/data';
 
 const projects = getProjects();
+const software = getSoftware();
+
+const activeProjects    = projects.projects.filter((p: any) => p.status === 'active');
+const completedProjects = projects.projects.filter((p: any) => p.status === 'completed');
+
+const activeSw     = software.software.filter((s: any) => s.status === 'Active Development');
+const inDevSw      = software.software.filter((s: any) => s.status === 'In Development' || s.status === 'Ongoing');
+const plannedSw    = software.software.filter((s: any) => s.status === 'Planned');
+
+const pageStats = [
+  { value: activeProjects.length,                                     label: 'Active Projects' },
+  { value: completedProjects.length || '—',                           label: 'Completed Projects' },
+  { value: activeSw.length,                                           label: 'Tools in Active Dev' },
+  { value: inDevSw.length + plannedSw.length,                         label: 'Tools Planned/In Dev' },
+];
 ---
 
-<PageLayout title="Projects" description="Funded and institutional research projects involving Jyotirmaya Ijaradar.">
+<PageLayout title="Projects & Software" description="Research projects, open-source software, and tools by Jyotirmaya Ijaradar.">
 
   <div class="page-header">
     <div class="max-w-4xl mx-auto">
-      <h1 class="section-title text-4xl">Projects</h1>
-      <p class="section-subtitle">Funded and institutional research projects</p>
+      <h1 class="text-3xl font-semibold text-navy-900 dark:text-navy-50 mb-1">Projects & Software</h1>
+      <p class="text-navy-500 dark:text-navy-400">Funded research projects and open-source tools</p>
     </div>
   </div>
 
   <div class="page-container">
-    <div class="max-w-3xl mb-10">
-      <p class="text-navy-600 dark:text-navy-300 leading-relaxed">
-        This page lists larger funded or institutional projects I am involved with. For individual research 
-        outputs, software, and tools, please see the 
-        <a href="/publications/" class="text-primary-600 dark:text-primary-400 hover:underline">Publications</a> and 
-        <a href="/software/" class="text-primary-600 dark:text-primary-400 hover:underline">Software & Tools</a> pages.
-      </p>
-    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {projects.projects.map((proj: any) => (
-        <ProjectCard
-          title={proj.title}
-          description={proj.description}
-          role={proj.role}
-          funding={proj.funding}
-          duration={proj.duration}
-          website={proj.website}
-          status={proj.status}
-          tags={proj.tags}
-        />
-      ))}
-    </div>
+    <StatsBar stats={pageStats} />
+
+    <!-- ── Research Projects ── -->
+    <section class="mb-14">
+      <h2 class="section-heading">Research Projects</h2>
+
+      {activeProjects.length > 0 && (
+        <div class="mb-8">
+          <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Active</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {activeProjects.map((proj: any) => (
+              <ProjectCard
+                title={proj.title}
+                description={proj.description}
+                role={proj.role}
+                funding={proj.funding}
+                duration={proj.duration}
+                website={proj.website}
+                github={proj.github}
+                docs={proj.docs}
+                demo={proj.demo}
+                status={proj.status}
+                tags={proj.tags}
+                publications={proj.publications}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {completedProjects.length > 0 && (
+        <div>
+          <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Completed</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {completedProjects.map((proj: any) => (
+              <ProjectCard
+                title={proj.title}
+                description={proj.description}
+                role={proj.role}
+                funding={proj.funding}
+                duration={proj.duration}
+                website={proj.website}
+                github={proj.github}
+                docs={proj.docs}
+                demo={proj.demo}
+                status={proj.status}
+                tags={proj.tags}
+                publications={proj.publications}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </section>
+
+    <!-- ── Software & Tools ── -->
+    <section>
+      <h2 class="section-heading">Software & Tools</h2>
+      <p class="text-sm text-navy-500 dark:text-navy-400 mb-6">
+        Open-source research software developed as part of my work in traffic data science.
+        Each tool can include links to its repository, documentation, live demo, and related publications.
+      </p>
+
+      {activeSw.length > 0 && (
+        <div class="mb-8">
+          <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Active Development</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {activeSw.map((sw: any) => (
+              <SoftwareCard
+                name={sw.name}
+                description={sw.description}
+                tech_stack={sw.tech_stack}
+                status={sw.status}
+                website={sw.website}
+                github={sw.github}
+                docs={sw.docs}
+                demo={sw.demo}
+                featured={sw.featured}
+                publications={sw.publications}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {inDevSw.length > 0 && (
+        <div class="mb-8">
+          <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">In Development</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {inDevSw.map((sw: any) => (
+              <SoftwareCard
+                name={sw.name}
+                description={sw.description}
+                tech_stack={sw.tech_stack}
+                status={sw.status}
+                website={sw.website}
+                github={sw.github}
+                docs={sw.docs}
+                demo={sw.demo}
+                featured={sw.featured}
+                publications={sw.publications}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {plannedSw.length > 0 && (
+        <div>
+          <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-4">Planned</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {plannedSw.map((sw: any) => (
+              <SoftwareCard
+                name={sw.name}
+                description={sw.description}
+                tech_stack={sw.tech_stack}
+                status={sw.status}
+                website={sw.website}
+                github={sw.github}
+                docs={sw.docs}
+                demo={sw.demo}
+                featured={sw.featured}
+                publications={sw.publications}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </section>
+
   </div>
 
 </PageLayout>
