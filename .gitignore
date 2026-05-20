@@ -1,5 +1,14 @@
+# Dependencies
 node_modules/
+
+# Build output
 dist/
 .astro/
+
+# System files
 .DS_Store
+*:Zone.Identifier
+Zone.Identifier
+
+# Logs
 *.log
