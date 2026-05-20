@@ -74,7 +74,7 @@ publications:
         booktitle={13th Symposium of the European Association for Research in Transportation (hEART 2025)},
         year={2025}
       }
-    featured: true
+    featured: false
 
   - id: sikder2025transition
     title: "Transition of car-based human-mobility in the pandemic era: Data insight from a cross-border region in Europe"
