@@ -1,0 +1,57 @@
+courses:
+  - id: applied-robotics-ccam
+    title: "Applied Robotics and Control for Cooperative and Autonomous Mobility"
+    role: "[Lecturer / Teaching Assistant / Co-Instructor]"
+    semester: "[Semester, e.g., Winter 2024/25]"
+    institution: "[University]"
+    description: "Course covering applied robotics concepts, control theory, and cooperative autonomous mobility systems."
+    materials: "[Link to course materials, if available]"
+
+  - id: traffic-data-science
+    title: "Traffic Data Science / Traffic Analytics"
+    role: "[Lecturer / Teaching Assistant]"
+    semester: "[Semester]"
+    institution: "[University]"
+    description: "Topics in traffic data collection, processing, visualization, imputation, and predictive analytics."
+    materials: "[Link to course materials, if available]"
+
+  - id: other-teaching
+    title: "[Other Teaching Activities]"
+    role: "[Role]"
+    semester: "[Semester]"
+    institution: "[University]"
+    description: "[Description to be added]"
+    materials: ""
+
+supervision:
+  bachelor_theses:
+    - title: "[Bachelor Thesis Title 1]"
+      student: "[Student Name]"
+      year: "[Year]"
+      status: "[Completed / Ongoing]"
+    - title: "[Bachelor Thesis Title 2]"
+      student: "[Student Name]"
+      year: "[Year]"
+      status: "[Completed / Ongoing]"
+
+  master_theses:
+    - title: "[Master Thesis Title 1]"
+      student: "[Student Name]"
+      year: "[Year]"
+      status: "[Completed / Ongoing]"
+    - title: "[Master Thesis Title 2]"
+      student: "[Student Name]"
+      year: "[Year]"
+      status: "[Completed / Ongoing]"
+
+  student_projects:
+    - title: "[Student Research Project Title]"
+      student: "[Student Name]"
+      year: "[Year]"
+      status: "[Completed / Ongoing]"
+
+  shk_tutor:
+    - name: "[SHK/Tutor Name]"
+      role: "[Role, e.g., Student Research Assistant]"
+      period: "[Period]"
+      topic: "[Topic/Task]"

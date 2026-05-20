@@ -1,0 +1,89 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import ResearchCard from '../components/ResearchCard.astro';
+
+const researchThemes = [
+  {
+    title: 'Traffic Data Imputation',
+    icon: 'imputation',
+    description: 'Developing spatiotemporal methods to reconstruct missing and corrupted traffic sensor data. This includes matrix/tensor-based approaches, graph neural networks, and diffusion models for high-quality imputation under various missingness patterns.',
+  },
+  {
+    title: 'Traffic Anomaly Detection',
+    icon: 'anomaly',
+    description: 'Building automated systems for detecting unusual events, sensor faults, and unexpected patterns in real-time traffic data streams using unsupervised and semi-supervised learning approaches.',
+  },
+  {
+    title: 'Traffic Forecasting',
+    icon: 'forecasting',
+    description: 'Predicting short-term and long-term traffic conditions (flow, speed, density) using spatiotemporal deep learning architectures, including graph attention networks and temporal transformers.',
+  },
+  {
+    title: 'Spatiotemporal Deep Learning',
+    icon: 'deeplearning',
+    description: 'Advancing graph neural network architectures, attention mechanisms, and representation learning methods tailored for spatiotemporal traffic data and transportation networks.',
+  },
+  {
+    title: 'Foundation Models for Traffic Data',
+    icon: 'foundation',
+    description: 'Exploring large-scale pre-trained models that can generalize across traffic tasks, geographies, and sensor types — towards a general-purpose traffic intelligence framework.',
+  },
+  {
+    title: 'CCAM & Digital Twin Mobility Systems',
+    icon: 'ccam',
+    description: 'Contributing to connected and cooperative autonomous mobility (CCAM) through digital twin simulation environments and data-driven mobility services.',
+  },
+  {
+    title: 'Public Transport Data Analytics',
+    icon: 'publictransport',
+    description: 'Analyzing public transport operational data for performance monitoring, demand estimation, and service optimization using data science and machine learning.',
+  },
+];
+---
+
+<PageLayout title="Research" description="Research themes and focus areas of Jyotirmaya Ijaradar.">
+
+  <div class="page-header">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="section-title text-4xl">Research</h1>
+      <p class="section-subtitle">Core themes and focus areas in traffic data science and AI for mobility</p>
+    </div>
+  </div>
+
+  <div class="page-container">
+    <!-- Research Overview -->
+    <div class="max-w-3xl mb-12">
+      <p class="text-navy-600 dark:text-navy-300 text-lg leading-relaxed">
+        My research sits at the intersection of transportation engineering, data science, and artificial intelligence. 
+        I develop computational methods that help us understand, reconstruct, and predict traffic patterns — 
+        with the broader goal of enabling smarter, safer, and more sustainable mobility systems.
+      </p>
+    </div>
+
+    <!-- Research Theme Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {researchThemes.map(theme => (
+        <div class="card p-8">
+          <ResearchCard title={theme.title} description={theme.description} icon={theme.icon} />
+        </div>
+      ))}
+    </div>
+
+    <!-- Methodological Approaches -->
+    <div class="mt-16">
+      <h2 class="font-display text-2xl font-bold text-navy-900 dark:text-navy-50 mb-6">Methodological Approaches</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {[
+          'Graph Neural Networks', 'Temporal Attention Models', 'Diffusion Models',
+          'Tensor Decomposition', 'Variational Autoencoders', 'Transformer Architectures',
+          'Spatiotemporal Kriging', 'Transfer Learning', 'Self-Supervised Learning',
+        ].map(method => (
+          <div class="px-4 py-3 rounded-lg bg-white dark:bg-navy-900 border border-navy-100 dark:border-navy-800 text-sm text-navy-700 dark:text-navy-300 font-medium">
+            {method}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+</PageLayout>

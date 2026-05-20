@@ -1,0 +1,90 @@
+publications:
+  - id: pub-placeholder-1
+    title: "[Publication Title 1]"
+    authors: "J. Ijaradar, [Co-authors]"
+    venue: "[Journal / Conference Name]"
+    year: 2025
+    type: journal
+    topics:
+      - traffic data imputation
+      - spatiotemporal deep learning
+    abstract: "[Abstract to be added]"
+    doi: "[DOI link]"
+    pdf: "[PDF link]"
+    code: "[Code repository link]"
+    project: ""
+    bibtex: |
+      @article{ijaradar2025placeholder1,
+        title={[Publication Title 1]},
+        author={Ijaradar, Jyotirmaya and [Co-authors]},
+        journal={[Journal Name]},
+        year={2025}
+      }
+    featured: true
+
+  - id: pub-placeholder-2
+    title: "[Publication Title 2]"
+    authors: "J. Ijaradar, [Co-authors]"
+    venue: "[Conference Name]"
+    year: 2024
+    type: conference
+    topics:
+      - traffic anomaly detection
+    abstract: "[Abstract to be added]"
+    doi: "[DOI link]"
+    pdf: "[PDF link]"
+    code: "[Code repository link]"
+    project: ""
+    bibtex: |
+      @inproceedings{ijaradar2024placeholder2,
+        title={[Publication Title 2]},
+        author={Ijaradar, Jyotirmaya and [Co-authors]},
+        booktitle={[Conference Name]},
+        year={2024}
+      }
+    featured: true
+
+  - id: pub-placeholder-3
+    title: "[Publication Title 3]"
+    authors: "J. Ijaradar, [Co-authors]"
+    venue: "[Journal / Conference Name]"
+    year: 2024
+    type: journal
+    topics:
+      - traffic forecasting
+      - foundation models
+    abstract: "[Abstract to be added]"
+    doi: "[DOI link]"
+    pdf: "[PDF link]"
+    code: ""
+    project: ""
+    bibtex: |
+      @article{ijaradar2024placeholder3,
+        title={[Publication Title 3]},
+        author={Ijaradar, Jyotirmaya and [Co-authors]},
+        journal={[Journal Name]},
+        year={2024}
+      }
+    featured: false
+
+  - id: pub-placeholder-4
+    title: "[Publication Title 4]"
+    authors: "J. Ijaradar, [Co-authors]"
+    venue: "[Conference Name]"
+    year: 2023
+    type: conference
+    topics:
+      - public transport data analytics
+    abstract: "[Abstract to be added]"
+    doi: "[DOI link]"
+    pdf: "[PDF link]"
+    code: ""
+    project: ""
+    bibtex: |
+      @inproceedings{ijaradar2023placeholder4,
+        title={[Publication Title 4]},
+        author={Ijaradar, Jyotirmaya and [Co-authors]},
+        booktitle={[Conference Name]},
+        year={2023}
+      }
+    featured: false

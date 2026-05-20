@@ -1,0 +1,52 @@
+projects:
+  - id: qlsa
+    title: "QLSA"
+    description: "[Short description to be added]"
+    role: "[My role]"
+    funding: "[Funding body]"
+    duration: "[Project duration]"
+    website: "[Project website link]"
+    status: active
+    tags:
+      - traffic data science
+      - AI
+    outputs: []
+
+  - id: jena5g
+    title: "Jena5G"
+    description: "[Short description to be added]"
+    role: "[My role]"
+    funding: "[Funding body]"
+    duration: "[Project duration]"
+    website: "[Project website link]"
+    status: active
+    tags:
+      - 5G
+      - connected mobility
+    outputs: []
+
+  - id: vamos-system-maintenance
+    title: "VAMOS System Maintenance"
+    description: "[Short description to be added]"
+    role: "[My role]"
+    funding: "[Funding body / Institution]"
+    duration: "[Project duration]"
+    website: "[Project website link]"
+    status: active
+    tags:
+      - system maintenance
+      - traffic systems
+    outputs: []
+
+  - id: nationalpark
+    title: "NationalPark"
+    description: "[Short description to be added]"
+    role: "[My role]"
+    funding: "[Funding body]"
+    duration: "[Project duration]"
+    website: "[Project website link]"
+    status: active
+    tags:
+      - mobility
+      - national park
+    outputs: []

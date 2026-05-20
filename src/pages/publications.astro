@@ -1,0 +1,131 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import PublicationCard from '../components/PublicationCard.astro';
+import { getPublications } from '../lib/data';
+
+const publications = getPublications();
+
+const featuredPubs = publications.publications.filter((p: any) => p.featured);
+const allPubs = publications.publications;
+
+// Group by year
+const pubsByYear: Record<number, any[]> = {};
+allPubs.forEach((pub: any) => {
+  if (!pubsByYear[pub.year]) pubsByYear[pub.year] = [];
+  pubsByYear[pub.year].push(pub);
+});
+const years = Object.keys(pubsByYear).map(Number).sort((a, b) => b - a);
+
+// Collect all topics
+const allTopics = [...new Set(allPubs.flatMap((p: any) => p.topics || []))].sort();
+---
+
+<PageLayout title="Publications" description="Publications by Jyotirmaya Ijaradar in traffic data science and AI for mobility.">
+
+  <div class="page-header">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="section-title text-4xl">Publications</h1>
+      <p class="section-subtitle">Journal articles, conference papers, and preprints</p>
+    </div>
+  </div>
+
+  <div class="page-container">
+    <!-- Featured -->
+    {featuredPubs.length > 0 && (
+      <section class="mb-16">
+        <h2 class="font-display text-2xl font-bold text-navy-900 dark:text-navy-50 mb-6">Featured Publications</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {featuredPubs.map((pub: any) => (
+            <PublicationCard
+              id={pub.id}
+              title={pub.title}
+              authors={pub.authors}
+              venue={pub.venue}
+              year={pub.year}
+              type={pub.type}
+              topics={pub.topics}
+              doi={pub.doi}
+              pdf={pub.pdf}
+              code={pub.code}
+              bibtex={pub.bibtex}
+              featured={true}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Topic Filters -->
+    <div class="mb-8">
+      <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-3">Filter by Topic</h3>
+      <div class="flex flex-wrap gap-2" id="topic-filters">
+        <button class="badge cursor-pointer bg-primary-600 text-white dark:bg-primary-500 dark:text-white" data-topic="all">All</button>
+        {allTopics.map((topic: string) => (
+          <button class="badge cursor-pointer hover:bg-primary-100 dark:hover:bg-primary-900 transition-colors" data-topic={topic}>
+            {topic}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Publications by Year -->
+    {years.map(year => (
+      <section class="mb-10" data-year={year}>
+        <h2 class="font-display text-xl font-bold text-navy-900 dark:text-navy-50 mb-4 flex items-center gap-3">
+          <span>{year}</span>
+          <span class="h-px flex-1 bg-navy-200 dark:bg-navy-800"></span>
+        </h2>
+        <div class="grid grid-cols-1 gap-4 pub-list">
+          {pubsByYear[year].map((pub: any) => (
+            <div data-topics={JSON.stringify(pub.topics || [])}>
+              <PublicationCard
+                id={pub.id}
+                title={pub.title}
+                authors={pub.authors}
+                venue={pub.venue}
+                year={pub.year}
+                type={pub.type}
+                topics={pub.topics}
+                doi={pub.doi}
+                pdf={pub.pdf}
+                code={pub.code}
+                bibtex={pub.bibtex}
+                featured={false}
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('#topic-filters button');
+      const pubItems = document.querySelectorAll('[data-topics]');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const topic = btn.getAttribute('data-topic');
+
+          // Update active state
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-primary-600', 'text-white', 'dark:bg-primary-500', 'dark:text-white');
+          });
+          btn.classList.add('bg-primary-600', 'text-white', 'dark:bg-primary-500', 'dark:text-white');
+
+          // Filter
+          pubItems.forEach(item => {
+            if (topic === 'all') {
+              (item as HTMLElement).style.display = '';
+            } else {
+              const topics = JSON.parse(item.getAttribute('data-topics') || '[]');
+              (item as HTMLElement).style.display = topics.includes(topic) ? '' : 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+
+</PageLayout>

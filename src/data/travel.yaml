@@ -1,0 +1,68 @@
+stats:
+  countries_visited: "[Number]"
+  cities_visited: "[Number]"
+
+entries:
+  - id: travel-1
+    country: "Germany"
+    city: "Dresden"
+    type: residence
+    year: "[Year]"
+    lat: 51.0504
+    lng: 13.7373
+    note: "Home base"
+
+  - id: travel-2
+    country: "[Country]"
+    city: "[City]"
+    type: conference
+    year: "[Year]"
+    lat: 0
+    lng: 0
+    conference: "[Conference Name]"
+    note: "[Brief note]"
+
+  - id: travel-3
+    country: "[Country]"
+    city: "[City]"
+    type: research_visit
+    year: "[Year]"
+    lat: 0
+    lng: 0
+    institution: "[Host Institution]"
+    note: "[Brief note]"
+
+  - id: travel-4
+    country: "[Country]"
+    city: "[City]"
+    type: personal
+    year: "[Year]"
+    lat: 0
+    lng: 0
+    note: "[Brief note]"
+
+  - id: travel-5
+    country: "[Country]"
+    city: "[City]"
+    type: business
+    year: "[Year]"
+    lat: 0
+    lng: 0
+    note: "[Brief note]"
+
+travel_types:
+  - id: conference
+    label: "Conference Travel"
+    color: "#3366ff"
+  - id: business
+    label: "Business Travel"
+    color: "#14b8a6"
+  - id: research_visit
+    label: "Research Visit"
+    color: "#f59e0b"
+  - id: personal
+    label: "Personal Travel"
+    color: "#ef4444"
+  - id: residence
+    label: "Residence"
+    color: "#8b5cf6"

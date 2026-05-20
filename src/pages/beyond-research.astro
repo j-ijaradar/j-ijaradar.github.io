@@ -1,0 +1,179 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import StatCard from '../components/StatCard.astro';
+import { getTravel, getVolunteering } from '../lib/data';
+
+const travel = getTravel();
+const volunteering = getVolunteering();
+---
+
+<PageLayout title="Beyond Research" description="Travel, photography, community activities, and personal interests of Jyotirmaya Ijaradar.">
+
+  <div class="page-header">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="section-title text-4xl">Beyond Research</h1>
+      <p class="section-subtitle">Travel, photography, community, and personal interests</p>
+    </div>
+  </div>
+
+  <div class="page-container">
+
+    <!-- Travel Map & Stats -->
+    <section class="mb-16">
+      <h2 class="font-display text-2xl font-bold text-navy-900 dark:text-navy-50 mb-6">Travel</h2>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <StatCard value={travel.stats.countries_visited} label="Countries Visited" />
+        <StatCard value={travel.stats.cities_visited} label="Cities Visited" />
+        <StatCard value="—" label="Conferences Attended" />
+        <StatCard value="—" label="Research Visits" />
+      </div>
+
+      <!-- Travel Type Legend -->
+      <div class="flex flex-wrap gap-3 mb-6">
+        {travel.travel_types.map((tt: any) => (
+          <div class="flex items-center gap-2 text-sm text-navy-600 dark:text-navy-300">
+            <span class="w-3 h-3 rounded-full" style={`background-color: ${tt.color}`}></span>
+            {tt.label}
+          </div>
+        ))}
+      </div>
+
+      <!-- Travel Map Placeholder -->
+      <div class="card p-8 text-center bg-navy-100/50 dark:bg-navy-800/50">
+        <div class="text-navy-400 dark:text-navy-500 mb-3">
+          <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <p class="text-navy-500 dark:text-navy-400 text-sm">
+          Interactive travel map coming soon. Travel data is stored in 
+          <code class="font-mono text-xs bg-navy-200 dark:bg-navy-700 px-1 py-0.5 rounded">src/data/travel.yaml</code> — 
+          add your travel entries there with coordinates and they will appear on the map.
+        </p>
+      </div>
+
+      <!-- Travel Entries -->
+      <div class="mt-6">
+        <h3 class="text-lg font-semibold text-navy-800 dark:text-navy-200 mb-4">Travel Log</h3>
+        <div class="space-y-3">
+          {travel.entries.map((entry: any) => (
+            <div class="card p-4 flex items-center gap-4">
+              <span class="w-3 h-3 rounded-full shrink-0" style={`background-color: ${(travel.travel_types.find((t: any) => t.id === entry.type) || {color: '#627d98'}).color}`}></span>
+              <div class="flex-1 min-w-0">
+                <p class="font-medium text-navy-900 dark:text-navy-50 text-sm">{entry.city}, {entry.country}</p>
+                <p class="text-xs text-navy-400 dark:text-navy-500">{entry.note}</p>
+              </div>
+              <span class="text-xs text-navy-400 dark:text-navy-500 shrink-0">{entry.year}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Travel Stories -->
+    <section class="mb-16">
+      <h2 class="font-display text-2xl font-bold text-navy-900 dark:text-navy-50 mb-6">Travel Stories</h2>
+      <div class="card bg-navy-100/50 dark:bg-navy-800/50 text-center p-8">
+        <p class="text-navy-500 dark:text-navy-400 text-sm">
+          Travel blogs, city reflections, and photo stories will appear here. 
+          Add MDX files to <code class="font-mono text-xs bg-navy-200 dark:bg-navy-700 px-1 py-0.5 rounded">src/content/travel-stories/</code>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Photography -->
+    <section class="mb-16">
+      <h2 class="font-display text-2xl font-bold text-navy-900 dark:text-navy-50 mb-6">Photography</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        {Array.from({length: 8}).map((_, i) => (
+          <div class="aspect-square rounded-lg bg-navy-200 dark:bg-navy-800 flex items-center justify-center">
+            <span class="text-xs text-navy-400 dark:text-navy-500">Photo {i + 1}</span>
+          </div>
+        ))}
+      </div>
+      <p class="text-sm text-navy-400 dark:text-navy-500 mt-4 text-center">
+        Add your photos to <code class="font-mono text-xs bg-navy-100 dark:bg-navy-800 px-1 py-0.5 rounded">public/images/photography/</code>
+      </p>
+    </section>
+
+    <!-- Community & Culture -->
+    <section class="mb-16">
+      <h2 class="font-display text-2xl font-bold text-navy-900 dark:text-navy-50 mb-6">Community & Culture</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {volunteering.community_activities.map((activity: any) => (
+          <div class="card">
+            <h3 class="font-semibold text-navy-900 dark:text-navy-50 mb-2">{activity.title}</h3>
+            <p class="text-sm text-navy-500 dark:text-navy-400">{activity.description}</p>
+            <p class="text-xs text-navy-400 dark:text-navy-500 mt-2">{activity.period}</p>
+          </div>
+        ))}
+        <div class="card">
+          <h3 class="font-semibold text-navy-900 dark:text-navy-50 mb-2">Bongo Utsav Dresden</h3>
+          <p class="text-sm text-navy-500 dark:text-navy-400">
+            {volunteering.volunteering.find((v: any) => v.id === 'bongo-utsav')?.description || '[Description of involvement in Bongo Utsav Dresden cultural activities]'}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Volunteering & Memberships -->
+    <section class="mb-16">
+      <h2 class="font-display text-2xl font-bold text-navy-900 dark:text-navy-50 mb-6">Volunteering & Memberships</h2>
+
+      <!-- Volunteering -->
+      <div class="space-y-4 mb-8">
+        {volunteering.volunteering.map((vol: any) => (
+          <div class="card flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-accent-50 dark:bg-accent-950 text-accent-600 dark:text-accent-400 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-navy-900 dark:text-navy-50">{vol.title}</h3>
+              <p class="text-sm text-navy-600 dark:text-navy-300">{vol.organization}</p>
+              <p class="text-sm text-navy-500 dark:text-navy-400 mt-1">{vol.description}</p>
+              <p class="text-xs text-navy-400 dark:text-navy-500 mt-1">{vol.period}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Memberships -->
+      <h3 class="text-lg font-semibold text-navy-800 dark:text-navy-200 mb-4">Professional Memberships</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {volunteering.memberships.map((mem: any) => (
+          <div class="card p-4">
+            <div class="flex items-start justify-between">
+              <div>
+                <h4 class="font-semibold text-navy-900 dark:text-navy-50 text-sm">{mem.title}</h4>
+                <p class="text-xs text-navy-500 dark:text-navy-400 mt-1">{mem.description}</p>
+              </div>
+              <span class="badge text-xs shrink-0">{mem.type}</span>
+            </div>
+            <p class="text-xs text-navy-400 dark:text-navy-500 mt-2">{mem.period}</p>
+            {mem.link && (
+              <a href={mem.link} class="btn-ghost text-xs mt-2" target="_blank" rel="noopener">Visit</a>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Personal Interests -->
+    <section>
+      <h2 class="font-display text-2xl font-bold text-navy-900 dark:text-navy-50 mb-6">Personal Interests</h2>
+      <div class="flex flex-wrap gap-3">
+        {volunteering.personal_interests.map((interest: string) => (
+          <span class="px-4 py-2 rounded-lg bg-white dark:bg-navy-900 border border-navy-100 dark:border-navy-800 text-sm text-navy-700 dark:text-navy-300">
+            {interest}
+          </span>
+        ))}
+      </div>
+    </section>
+
+  </div>
+
+</PageLayout>

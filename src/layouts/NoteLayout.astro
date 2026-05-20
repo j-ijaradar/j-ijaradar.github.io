@@ -1,0 +1,65 @@
+---
+import PageLayout from './PageLayout.astro';
+
+const { frontmatter } = Astro.props;
+const { title, date, category, tags = [], summary, relatedPublication, relatedProject, relatedSoftware } = frontmatter;
+---
+
+<PageLayout title={title} description={summary}>
+  <article class="page-header">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="flex items-center gap-2 mb-4">
+        <a href="/research-notes/" class="btn-ghost text-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          Back to Notes
+        </a>
+      </div>
+
+      <div class="flex items-center gap-2 mb-3">
+        <span class="badge">{category}</span>
+        <span class="text-sm text-navy-400 dark:text-navy-500">{date}</span>
+      </div>
+
+      <h1 class="font-display text-3xl md:text-4xl font-bold text-navy-900 dark:text-navy-50 mb-4">
+        {title}
+      </h1>
+
+      {summary && (
+        <p class="text-lg text-navy-500 dark:text-navy-400 mb-6 leading-relaxed">{summary}</p>
+      )}
+
+      {tags && tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-8">
+          {tags.map((tag: string) => (
+            <span class="text-xs px-2.5 py-1 rounded-full bg-navy-100 dark:bg-navy-800 text-navy-500 dark:text-navy-400">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  </article>
+
+  <div class="max-w-3xl mx-auto px-4 pb-20">
+    <div class="prose-custom">
+      <slot />
+    </div>
+
+    {(relatedPublication || relatedProject || relatedSoftware) && (
+      <div class="mt-12 pt-6 border-t border-navy-200 dark:border-navy-800">
+        <h3 class="font-display font-semibold text-navy-900 dark:text-navy-50 mb-3">Related</h3>
+        <div class="flex flex-wrap gap-3">
+          {relatedPublication && (
+            <a href={relatedPublication} class="btn-ghost text-sm">Publication</a>
+          )}
+          {relatedProject && (
+            <a href={relatedProject} class="btn-ghost text-sm">Project</a>
+          )}
+          {relatedSoftware && (
+            <a href={relatedSoftware} class="btn-ghost text-sm">Software</a>
+          )}
+        </div>
+      </div>
+    )}
+  </div>
+</PageLayout>

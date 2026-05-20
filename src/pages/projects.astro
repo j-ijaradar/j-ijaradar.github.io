@@ -1,0 +1,44 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getProjects } from '../lib/data';
+
+const projects = getProjects();
+---
+
+<PageLayout title="Projects" description="Funded and institutional research projects involving Jyotirmaya Ijaradar.">
+
+  <div class="page-header">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="section-title text-4xl">Projects</h1>
+      <p class="section-subtitle">Funded and institutional research projects</p>
+    </div>
+  </div>
+
+  <div class="page-container">
+    <div class="max-w-3xl mb-10">
+      <p class="text-navy-600 dark:text-navy-300 leading-relaxed">
+        This page lists larger funded or institutional projects I am involved with. For individual research 
+        outputs, software, and tools, please see the 
+        <a href="/publications/" class="text-primary-600 dark:text-primary-400 hover:underline">Publications</a> and 
+        <a href="/software/" class="text-primary-600 dark:text-primary-400 hover:underline">Software & Tools</a> pages.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {projects.projects.map((proj: any) => (
+        <ProjectCard
+          title={proj.title}
+          description={proj.description}
+          role={proj.role}
+          funding={proj.funding}
+          duration={proj.duration}
+          website={proj.website}
+          status={proj.status}
+          tags={proj.tags}
+        />
+      ))}
+    </div>
+  </div>
+
+</PageLayout>

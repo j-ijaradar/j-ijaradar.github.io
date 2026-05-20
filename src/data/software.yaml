@@ -1,0 +1,62 @@
+software:
+  - id: trafficinsight360
+    name: "TrafficInsight360"
+    description: "A comprehensive traffic data science toolkit for imputation, anomaly detection, forecasting, and spatiotemporal analysis."
+    tech_stack:
+      - Python
+      - PyTorch
+      - pandas
+    status: "Active Development"
+    github: "[GitHub repository link]"
+    docs: "[Documentation link]"
+    demo: "[Demo link, if available]"
+    featured: true
+
+  - id: trafficinsight360-studio
+    name: "TrafficInsight360 Studio"
+    description: "An interactive dashboard and visual analytics interface for exploring traffic data and model outputs."
+    tech_stack:
+      - Python
+      - Streamlit
+      - Plotly
+    status: "Active Development"
+    github: "[GitHub repository link]"
+    docs: "[Documentation link]"
+    demo: "[Demo link, if available]"
+    featured: true
+
+  - id: trafficinsight360-edu
+    name: "TrafficInsight360 Edu"
+    description: "Educational version of TrafficInsight360 designed for teaching traffic data science concepts with interactive tutorials and notebooks."
+    tech_stack:
+      - Python
+      - Jupyter
+    status: "In Development"
+    github: "[GitHub repository link]"
+    docs: "[Documentation link]"
+    demo: "[Demo link, if available]"
+    featured: true
+
+  - id: trafficinsight360-r
+    name: "TrafficInsight360 R Wrapper"
+    description: "R language wrapper for the TrafficInsight360 Python package, enabling R users to access traffic data science tools."
+    tech_stack:
+      - R
+      - reticulate
+    status: "Planned"
+    github: "[GitHub repository link]"
+    docs: "[Documentation link]"
+    demo: ""
+    featured: false
+
+  - id: other-research-tools
+    name: "Other Research Code & Tools"
+    description: "Open-source research code, experiment scripts, and utility tools developed during research projects."
+    tech_stack:
+      - Python
+      - various
+    status: "Ongoing"
+    github: "[GitHub profile link]"
+    docs: ""
+    demo: ""
+    featured: false

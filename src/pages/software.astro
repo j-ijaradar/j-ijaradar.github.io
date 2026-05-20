@@ -1,0 +1,71 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SoftwareCard from '../components/SoftwareCard.astro';
+import { getSoftware } from '../lib/data';
+
+const software = getSoftware();
+const featuredTools = software.software.filter((s: any) => s.featured);
+const otherTools = software.software.filter((s: any) => !s.featured);
+---
+
+<PageLayout title="Software & Tools" description="Research software, packages, and tools developed by Jyotirmaya Ijaradar.">
+
+  <div class="page-header">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="section-title text-4xl">Software & Tools</h1>
+      <p class="section-subtitle">Research software, packages, dashboards, and open-source tools</p>
+    </div>
+  </div>
+
+  <div class="page-container">
+    <div class="max-w-3xl mb-10">
+      <p class="text-navy-600 dark:text-navy-300 leading-relaxed">
+        I develop open-source tools and software for traffic data science. These range from comprehensive 
+        Python toolkits to interactive dashboards and educational resources. Contributions and feedback are welcome.
+      </p>
+    </div>
+
+    <!-- Featured Tools -->
+    {featuredTools.length > 0 && (
+      <section class="mb-12">
+        <h2 class="font-display text-2xl font-bold text-navy-900 dark:text-navy-50 mb-6">Featured Tools</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {featuredTools.map((sw: any) => (
+            <SoftwareCard
+              name={sw.name}
+              description={sw.description}
+              tech_stack={sw.tech_stack}
+              status={sw.status}
+              github={sw.github}
+              docs={sw.docs}
+              demo={sw.demo}
+              featured={true}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Other Tools -->
+    {otherTools.length > 0 && (
+      <section>
+        <h2 class="font-display text-2xl font-bold text-navy-900 dark:text-navy-50 mb-6">Other Tools & Code</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {otherTools.map((sw: any) => (
+            <SoftwareCard
+              name={sw.name}
+              description={sw.description}
+              tech_stack={sw.tech_stack}
+              status={sw.status}
+              github={sw.github}
+              docs={sw.docs}
+              demo={sw.demo}
+              featured={false}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+
+</PageLayout>

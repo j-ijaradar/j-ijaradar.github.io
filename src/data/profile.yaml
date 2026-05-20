@@ -1,0 +1,71 @@
+name: Jyotirmaya Ijaradar
+title: Researcher in Traffic Data Science & AI for Mobility
+tagline: "Bridging data science, deep learning, and transportation — building intelligent systems for smarter, safer mobility."
+email: "[your.email@institution.de]"
+institution: "[Your Institution / University]"
+department: "[Department Name]"
+position: "[Current Position, e.g., Research Associate / Doctoral Researcher]"
+location: "[City, Germany]"
+
+photo: "/images/profile.jpg"
+cv_pdf: "/cv/jyotirmaya-ijaradar-cv.pdf"
+
+links:
+  github: "https://github.com/[your-github]"
+  scholar: "https://scholar.google.com/citations?user=[your-id]"
+  linkedin: "https://linkedin.com/in/[your-linkedin]"
+  orcid: "https://orcid.org/[your-orcid]"
+  researchgate: "https://www.researchgate.net/profile/[your-profile]"
+
+bio_short: >
+  I am a researcher working at the intersection of traffic data science, artificial intelligence, 
+  and intelligent mobility systems. My work focuses on developing data-driven methods for understanding, 
+  imputing, detecting anomalies in, and forecasting traffic data using spatiotemporal deep learning approaches.
+
+bio_long: >
+  My research sits at the intersection of transportation engineering and data science. I develop 
+  computational methods for traffic data imputation, anomaly detection, and forecasting, leveraging 
+  spatiotemporal deep learning and foundation models. I am also interested in connected and cooperative 
+  autonomous mobility (CCAM), digital twin mobility systems, and public transport data analytics.
+  
+  Beyond research, I enjoy travelling, photography, contributing to Wikipedia, and engaging with 
+  cultural communities. I believe in open science, reproducible research, and building tools that 
+  make traffic data science more accessible.
+
+research_interests:
+  - Traffic Data Imputation
+  - Traffic Anomaly Detection
+  - Traffic Forecasting
+  - Spatiotemporal Deep Learning
+  - Foundation Models for Traffic Data
+  - CCAM & Digital Twin Mobility Systems
+  - Public Transport Data Analytics
+
+education:
+  - degree: "[Ph.D. / Doctoral Researcher]"
+    field: "[Field]"
+    institution: "[University]"
+    year: "[Year – present / Year]"
+  - degree: "[M.Sc. / M.Tech.]"
+    field: "[Field]"
+    institution: "[University]"
+    year: "[Year]"
+  - degree: "[B.Sc. / B.Tech.]"
+    field: "[Field]"
+    institution: "[University]"
+    year: "[Year]"
+
+experience:
+  - role: "[Current Position]"
+    organization: "[Institution]"
+    period: "[Start Year – Present]"
+    description: "[Brief description of role and responsibilities]"
+  - role: "[Previous Position]"
+    organization: "[Institution / Company]"
+    period: "[Start Year – End Year]"
+    description: "[Brief description]"
+
+personal_note: >
+  Outside of research, I enjoy exploring new cities, photographing urban landscapes, 
+  contributing to Wikipedia, and participating in cultural events. I am an active member 
+  of the Dresden community and enjoy connecting with people across disciplines and cultures.

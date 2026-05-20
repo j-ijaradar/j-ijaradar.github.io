@@ -1,0 +1,117 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import NoteCard from '../components/NoteCard.astro';
+
+// In a full setup, these would come from Astro content collections
+// For now, using sample placeholder notes
+const categories = [
+  'Publication Notes',
+  'Technical Notes',
+  'Research Ideas',
+  'Conference Reflections',
+  'Personal Notes',
+];
+
+const supportedTags = [
+  'publication summaries', 'traffic data tutorials', 'deep learning notes',
+  'dataset notes', 'methodological reflections', 'conference reflections',
+  'practical coding notes',
+];
+
+const sampleNotes = [
+  {
+    title: '[Sample: Getting Started with Traffic Data Imputation]',
+    date: '2025-01-15',
+    category: 'Technical Notes',
+    tags: ['traffic data', 'imputation', 'tutorial'],
+    summary: 'A technical overview of common approaches to traffic data imputation, including matrix factorization, tensor methods, and deep learning approaches.',
+    slug: 'sample-note',
+  },
+  {
+    title: '[Sample: Conference Reflections — TRB 2025]',
+    date: '2025-01-10',
+    category: 'Conference Reflections',
+    tags: ['conference', 'TRB', 'travel'],
+    summary: 'Reflections on key themes, interesting papers, and takeaways from the TRB Annual Meeting 2025.',
+    slug: 'sample-note-2',
+  },
+  {
+    title: '[Sample: Notes on Graph Neural Networks for Traffic]',
+    date: '2024-12-01',
+    category: 'Technical Notes',
+    tags: ['deep learning', 'GNN', 'spatiotemporal'],
+    summary: 'Personal study notes on how graph neural networks are applied to traffic forecasting and data reconstruction.',
+    slug: 'sample-note-3',
+  },
+  {
+    title: '[Sample: New Dataset — PeMS-Bay Revisited]',
+    date: '2024-11-15',
+    category: 'Publication Notes',
+    tags: ['dataset', 'benchmark', 'PeMS'],
+    summary: 'Notes on revisiting the PeMS-Bay benchmark dataset and common pitfalls in its use for traffic forecasting evaluation.',
+    slug: 'sample-note-4',
+  },
+];
+---
+
+<PageLayout title="Research Notes" description="Technical posts, reflections, and ideas by Jyotirmaya Ijaradar.">
+
+  <div class="page-header">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="section-title text-4xl">Research Notes</h1>
+      <p class="section-subtitle">Technical posts, publication summaries, reflections, and ideas</p>
+    </div>
+  </div>
+
+  <div class="page-container">
+    <!-- Categories -->
+    <div class="mb-10">
+      <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-3">Categories</h3>
+      <div class="flex flex-wrap gap-2">
+        <button class="badge cursor-pointer bg-primary-600 text-white dark:bg-primary-500">All</button>
+        {categories.map(cat => (
+          <button class="badge cursor-pointer hover:bg-primary-100 dark:hover:bg-primary-900 transition-colors">
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Supported Topics -->
+    <div class="mb-10">
+      <h3 class="text-sm font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider mb-3">Topics</h3>
+      <div class="flex flex-wrap gap-2">
+        {supportedTags.map(tag => (
+          <span class="text-xs px-2.5 py-1 rounded-full bg-navy-100 dark:bg-navy-800 text-navy-500 dark:text-navy-400">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Notes Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {sampleNotes.map(note => (
+        <NoteCard
+          title={note.title}
+          date={note.date}
+          category={note.category}
+          tags={note.tags}
+          summary={note.summary}
+          slug={note.slug}
+        />
+      ))}
+    </div>
+
+    <!-- Info Box -->
+    <div class="mt-12 card bg-primary-50/50 dark:bg-primary-950/30 border-primary-200 dark:border-primary-800">
+      <p class="text-sm text-navy-600 dark:text-navy-300">
+        <strong class="text-navy-900 dark:text-navy-50">How to add notes:</strong> 
+        Each research note is a Markdown or MDX file in <code class="font-mono text-xs bg-navy-100 dark:bg-navy-800 px-1 py-0.5 rounded">src/content/notes/</code>. 
+        Add a new <code class="font-mono text-xs bg-navy-100 dark:bg-navy-800 px-1 py-0.5 rounded">.md</code> or <code class="font-mono text-xs bg-navy-100 dark:bg-navy-800 px-1 py-0.5 rounded">.mdx</code> file with 
+        frontmatter (title, date, category, tags, summary) and it will appear here automatically.
+      </p>
+    </div>
+  </div>
+
+</PageLayout>

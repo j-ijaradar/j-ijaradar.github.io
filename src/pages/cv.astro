@@ -1,0 +1,209 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { getProfile, getSkills, getPublications, getProjects, getSoftware, getTeaching, getVolunteering } from '../lib/data';
+
+const profile = getProfile();
+const skills = getSkills();
+const publications = getPublications();
+const projects = getProjects();
+const software = getSoftware();
+const teaching = getTeaching();
+const volunteering = getVolunteering();
+---
+
+<PageLayout title="CV" description="Curriculum Vitae of Jyotirmaya Ijaradar.">
+
+  <div class="page-header">
+    <div class="max-w-6xl mx-auto flex items-end justify-between">
+      <div>
+        <h1 class="section-title text-4xl">Curriculum Vitae</h1>
+        <p class="section-subtitle">Academic and professional background</p>
+      </div>
+      <a href={profile.cv_pdf} class="btn-primary shrink-0" target="_blank">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        Download PDF
+      </a>
+    </div>
+  </div>
+
+  <div class="page-container">
+    <div class="max-w-3xl mx-auto space-y-12">
+
+      <!-- Header -->
+      <div class="text-center border-b border-navy-200 dark:border-navy-800 pb-8">
+        <h2 class="font-display text-3xl font-bold text-navy-900 dark:text-navy-50">{profile.name}</h2>
+        <p class="text-lg text-primary-600 dark:text-primary-400 mt-1">{profile.title}</p>
+        <p class="text-sm text-navy-500 dark:text-navy-400 mt-2">{profile.institution} · {profile.location}</p>
+        <div class="flex justify-center gap-4 mt-3 text-sm">
+          <a href={`mailto:${profile.email}`} class="text-navy-500 hover:text-primary-600 dark:text-navy-400 dark:hover:text-primary-400">{profile.email}</a>
+          <a href={profile.links.github} class="text-navy-500 hover:text-primary-600 dark:text-navy-400 dark:hover:text-primary-400" target="_blank">GitHub</a>
+          <a href={profile.links.scholar} class="text-navy-500 hover:text-primary-600 dark:text-navy-400 dark:hover:text-primary-400" target="_blank">Scholar</a>
+          <a href={profile.links.orcid} class="text-navy-500 hover:text-primary-600 dark:text-navy-400 dark:hover:text-primary-400" target="_blank">ORCID</a>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <section>
+        <h3 class="font-display text-xl font-bold text-navy-900 dark:text-navy-50 mb-4 flex items-center gap-3">
+          Education
+          <span class="h-px flex-1 bg-navy-200 dark:bg-navy-800"></span>
+        </h3>
+        <div class="space-y-4">
+          {profile.education.map((edu: any) => (
+            <div class="flex justify-between">
+              <div>
+                <p class="font-semibold text-navy-900 dark:text-navy-50">{edu.degree} — {edu.field}</p>
+                <p class="text-sm text-navy-500 dark:text-navy-400">{edu.institution}</p>
+              </div>
+              <span class="text-sm text-navy-400 dark:text-navy-500 shrink-0">{edu.year}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section>
+        <h3 class="font-display text-xl font-bold text-navy-900 dark:text-navy-50 mb-4 flex items-center gap-3">
+          Professional Experience
+          <span class="h-px flex-1 bg-navy-200 dark:bg-navy-800"></span>
+        </h3>
+        <div class="space-y-4">
+          {profile.experience.map((exp: any) => (
+            <div class="flex justify-between">
+              <div>
+                <p class="font-semibold text-navy-900 dark:text-navy-50">{exp.role}</p>
+                <p class="text-sm text-navy-500 dark:text-navy-400">{exp.organization}</p>
+                <p class="text-sm text-navy-400 dark:text-navy-500">{exp.description}</p>
+              </div>
+              <span class="text-sm text-navy-400 dark:text-navy-500 shrink-0">{exp.period}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Research Interests -->
+      <section>
+        <h3 class="font-display text-xl font-bold text-navy-900 dark:text-navy-50 mb-4 flex items-center gap-3">
+          Research Interests
+          <span class="h-px flex-1 bg-navy-200 dark:bg-navy-800"></span>
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          {profile.research_interests.map((interest: string) => (
+            <span class="badge">{interest}</span>
+          ))}
+        </div>
+      </section>
+
+      <!-- Publications -->
+      <section>
+        <h3 class="font-display text-xl font-bold text-navy-900 dark:text-navy-50 mb-4 flex items-center gap-3">
+          Publications
+          <span class="h-px flex-1 bg-navy-200 dark:bg-navy-800"></span>
+        </h3>
+        <div class="space-y-3">
+          {publications.publications.map((pub: any) => (
+            <div class="text-sm">
+              <p class="text-navy-900 dark:text-navy-50">{pub.authors}. "{pub.title}." <em>{pub.venue}</em>, {pub.year}.</p>
+            </div>
+          ))}
+        </div>
+        <a href="/publications/" class="btn-ghost text-sm mt-4 inline-flex">View all publications →</a>
+      </section>
+
+      <!-- Projects -->
+      <section>
+        <h3 class="font-display text-xl font-bold text-navy-900 dark:text-navy-50 mb-4 flex items-center gap-3">
+          Projects
+          <span class="h-px flex-1 bg-navy-200 dark:bg-navy-800"></span>
+        </h3>
+        <div class="space-y-3">
+          {projects.projects.map((proj: any) => (
+            <div class="flex justify-between text-sm">
+              <div>
+                <span class="font-semibold text-navy-900 dark:text-navy-50">{proj.title}</span>
+                <span class="text-navy-400 dark:text-navy-500"> — {proj.role}</span>
+              </div>
+              <span class="text-navy-400 dark:text-navy-500 shrink-0">{proj.duration}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Teaching -->
+      <section>
+        <h3 class="font-display text-xl font-bold text-navy-900 dark:text-navy-50 mb-4 flex items-center gap-3">
+          Teaching
+          <span class="h-px flex-1 bg-navy-200 dark:bg-navy-800"></span>
+        </h3>
+        <div class="space-y-3">
+          {teaching.courses.map((course: any) => (
+            <div class="flex justify-between text-sm">
+              <div>
+                <span class="font-semibold text-navy-900 dark:text-navy-50">{course.title}</span>
+                <span class="text-navy-400 dark:text-navy-500"> — {course.role}</span>
+              </div>
+              <span class="text-navy-400 dark:text-navy-500 shrink-0">{course.semester}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Software -->
+      <section>
+        <h3 class="font-display text-xl font-bold text-navy-900 dark:text-navy-50 mb-4 flex items-center gap-3">
+          Software & Tools
+          <span class="h-px flex-1 bg-navy-200 dark:bg-navy-800"></span>
+        </h3>
+        <div class="space-y-2">
+          {software.software.map((sw: any) => (
+            <div class="text-sm">
+              <span class="font-semibold text-navy-900 dark:text-navy-50">{sw.name}</span>
+              <span class="text-navy-500 dark:text-navy-400"> — {sw.description}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section>
+        <h3 class="font-display text-xl font-bold text-navy-900 dark:text-navy-50 mb-4 flex items-center gap-3">
+          Technical Skills
+          <span class="h-px flex-1 bg-navy-200 dark:bg-navy-800"></span>
+        </h3>
+        <div class="space-y-3">
+          {skills.technical.map((cat: any) => (
+            <div class="text-sm">
+              <span class="font-semibold text-navy-700 dark:text-navy-300">{cat.category}:</span>
+              <span class="text-navy-500 dark:text-navy-400"> {cat.skills.map((s: any) => s.name).join(', ')}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Service & Memberships -->
+      <section>
+        <h3 class="font-display text-xl font-bold text-navy-900 dark:text-navy-50 mb-4 flex items-center gap-3">
+          Service, Volunteering & Memberships
+          <span class="h-px flex-1 bg-navy-200 dark:bg-navy-800"></span>
+        </h3>
+        <div class="space-y-2">
+          {volunteering.memberships.map((mem: any) => (
+            <div class="text-sm">
+              <span class="font-semibold text-navy-900 dark:text-navy-50">{mem.title}</span>
+              <span class="text-navy-500 dark:text-navy-400"> — {mem.description}</span>
+              <span class="text-navy-400 dark:text-navy-500"> ({mem.period})</span>
+            </div>
+          ))}
+          {volunteering.volunteering.map((vol: any) => (
+            <div class="text-sm">
+              <span class="font-semibold text-navy-900 dark:text-navy-50">{vol.title}</span>
+              <span class="text-navy-500 dark:text-navy-400"> — {vol.description}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</PageLayout>
