@@ -2,11 +2,11 @@ projects:
   - id: qlsa
     title: "QLSA"
     description: "[Short description to be added]"
-    role: "[My role]"
-    funding: "[Funding body]"
-    duration: "[Project duration]"
-    status: active
-    website: "[Project website link]"
+    role: "Developer"
+    funding: "EFRE"
+    duration: "2023-2024"
+    status: completed
+    website: "https://www.dvb.de/de-de/die-dvb/zukunftsprojekte/verkehrssteuerung-ost-west-verbindung"
     github: ""
     docs: ""
     demo: ""
@@ -18,11 +18,11 @@ projects:
   - id: jena5g
     title: "Jena5G"
     description: "[Short description to be added]"
-    role: "[My role]"
-    funding: "[Funding body]"
-    duration: "[Project duration]"
-    status: active
-    website: "[Project website link]"
+    role: "Developer"
+    funding: "BMDV"
+    duration: "2024-2025"
+    status: completed
+    website: "https://smartcity.jena.de/5g/projektbeschreibung"
     github: ""
     docs: ""
     demo: ""
@@ -34,9 +34,9 @@ projects:
   - id: vamos-system-maintenance
     title: "VAMOS System Maintenance"
     description: "[Short description to be added]"
-    role: "[My role]"
-    funding: "[Funding body / Institution]"
-    duration: "[Project duration]"
+    role: "Maintainer"
+    funding: "City of Dresden"
+    duration: "2023-Now"
     status: active
     website: "[Project website link]"
     github: ""
@@ -50,11 +50,11 @@ projects:
   - id: nationalpark
     title: "NationalPark"
     description: "[Short description to be added]"
-    role: "[My role]"
-    funding: "[Funding body]"
-    duration: "[Project duration]"
+    role: "Developer"
+    funding: "Interreg"
+    duration: "2025-2027"
     status: active
-    website: "[Project website link]"
+    website: "https://interreg.npcss.cz/"
     github: ""
     docs: ""
     demo: ""

@@ -1,21 +1,21 @@
 name: Jyotirmaya Ijaradar
-title: Researcher in Traffic Data Science & AI for Mobility
+title: Researcher in Big Traffic Data Science & AI for Mobility
 tagline: "Bridging data science, deep learning, and transportation — building intelligent systems for smarter, safer mobility."
-email: "[your.email@institution.de]"
-institution: "[Your Institution / University]"
-department: "[Department Name]"
-position: "[Current Position, e.g., Research Associate / Doctoral Researcher]"
-location: "[City, Germany]"
+email: "jyotirmaya.ijaradar@tu-dresden.de"
+institution: "Dresden University of Technology"
+department: "Chair of Traffic Process Automation"
+position: "Research Associate / Doctoral Researcher"
+location: "Dresden, Germany"
 
 photo: "/images/profile.jpg"
 cv_pdf: "/cv/jyotirmaya-ijaradar-cv.pdf"
 
 links:
-  github: "https://github.com/[your-github]"
-  scholar: "https://scholar.google.com/citations?user=[your-id]"
-  linkedin: "https://linkedin.com/in/[your-linkedin]"
-  orcid: "https://orcid.org/[your-orcid]"
-  researchgate: "https://www.researchgate.net/profile/[your-profile]"
+  github: "https://github.com/j-ijaradar"
+  scholar: "https://scholar.google.com/citations?user=T29aixQAAAAJ&hl"
+  linkedin: "https://linkedin.com/in/jyotirmaya-ijaradar-62156588"
+  orcid: "https://orcid.org/0000-0002-8450-4550"
+  researchgate: "https://www.researchgate.net/profile/Jyotirmaya_Ijaradar"
 
 bio_short: >
   I am a researcher working at the intersection of traffic data science, artificial intelligence, 
