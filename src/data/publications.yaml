@@ -1,90 +1,215 @@
 publications:
-  - id: pub-placeholder-1
-    title: "[Publication Title 1]"
-    authors: "J. Ijaradar, [Co-authors]"
-    venue: "[Journal / Conference Name]"
-    year: 2025
-    type: journal
+  - id: ijaradar2026did
+    title: "How did the Urban Network Flow Adapt to the Collapse of the Carola Bridge?"
+    authors: "J. Ijaradar, N. Xie, L. Wei, S. Pape, M. Körner, M. Wang"
+    venue: "arXiv preprint arXiv:2603.19947"
+    year: 2026
+    type: preprint
     topics:
-      - traffic data imputation
-      - spatiotemporal deep learning
-    abstract: "[Abstract to be added]"
-    doi: "[DOI link]"
-    pdf: "[PDF link]"
-    code: "[Code repository link]"
+      - urban traffic analysis
+      - network flow adaptation
+      - bridge collapse impact
+      - traffic data analytics
+    abstract: ""
+    doi: ""
+    pdf: ""
+    code: ""
     project: ""
     bibtex: |
-      @article{ijaradar2025placeholder1,
-        title={[Publication Title 1]},
-        author={Ijaradar, Jyotirmaya and [Co-authors]},
-        journal={[Journal Name]},
+      @article{ijaradar2026did,
+        title={How did the Urban Network Flow Adapt to the Collapse of the Carola Bridge?},
+        author={Ijaradar, Jyotirmaya and Xie, Ning and Wei, Lei and Pape, Sebastian and K{\"o}rner, Matthias and Wang, Meng},
+        journal={arXiv preprint arXiv:2603.19947},
+        year={2026}
+      }
+    featured: true
+
+  - id: ijaradar2025data
+    title: "Data-Driven Anomaly Detection in Urban Traffic Data: A Deep Learning Approach"
+    authors: "J. Ijaradar, S. Pape, C. Tan, M. Körner, M. Wang"
+    venue: "2025 9th International Conference on Models and Technologies for Intelligent Transportation Systems (MT-ITS)"
+    year: 2025
+    type: conference
+    topics:
+      - traffic anomaly detection
+      - urban traffic data
+      - deep learning
+      - intelligent transportation systems
+    abstract: ""
+    doi: ""
+    pdf: ""
+    code: ""
+    project: ""
+    bibtex: |
+      @inproceedings{ijaradar2025data,
+        title={Data-Driven Anomaly Detection in Urban Traffic Data: A Deep Learning Approach},
+        author={Ijaradar, Jyotirmaya and Pape, Sebastian and Tan, Chaopeng and K{\"o}rner, Matthias and Wang, Meng},
+        booktitle={2025 9th International Conference on Models and Technologies for Intelligent Transportation Systems (MT-ITS)},
+        pages={1--6},
+        year={2025},
+        organization={IEEE}
+      }
+    featured: true
+
+  - id: ning2025short
+    title: "Short-term Impacts of Carola Bridge Collapse on Road Traffic"
+    authors: "N. Xie, J. Ijaradar, L. Wei, S. Pape, M. Körner, M. Wang"
+    venue: "13th Symposium of the European Association for Research in Transportation (hEART 2025)"
+    year: 2025
+    type: conference
+    topics:
+      - road traffic analysis
+      - bridge collapse impact
+      - urban mobility
+      - traffic disruption
+    abstract: ""
+    doi: ""
+    pdf: ""
+    code: ""
+    project: ""
+    bibtex: |
+      @inproceedings{ning2025short,
+        title={Short-term Impacts of Carola Bridge Collapse on Road Traffic},
+        author={Xie, Ning and Ijaradar, Jyotirmaya and Wei, Lei and Pape, Sebastian and K{\"o}rner, Matthias and Wang, Meng},
+        booktitle={13th Symposium of the European Association for Research in Transportation (hEART 2025)},
         year={2025}
       }
     featured: true
 
-  - id: pub-placeholder-2
-    title: "[Publication Title 2]"
-    authors: "J. Ijaradar, [Co-authors]"
-    venue: "[Conference Name]"
-    year: 2024
-    type: conference
+  - id: sikder2025transition
+    title: "Transition of car-based human-mobility in the pandemic era: Data insight from a cross-border region in Europe"
+    authors: "S. K. Sikder, J. Ijaradar, H. Li, H. Omrani"
+    venue: "arXiv preprint arXiv:2509.05166"
+    year: 2025
+    type: preprint
     topics:
-      - traffic anomaly detection
-    abstract: "[Abstract to be added]"
-    doi: "[DOI link]"
-    pdf: "[PDF link]"
-    code: "[Code repository link]"
-    project: ""
-    bibtex: |
-      @inproceedings{ijaradar2024placeholder2,
-        title={[Publication Title 2]},
-        author={Ijaradar, Jyotirmaya and [Co-authors]},
-        booktitle={[Conference Name]},
-        year={2024}
-      }
-    featured: true
-
-  - id: pub-placeholder-3
-    title: "[Publication Title 3]"
-    authors: "J. Ijaradar, [Co-authors]"
-    venue: "[Journal / Conference Name]"
-    year: 2024
-    type: journal
-    topics:
-      - traffic forecasting
-      - foundation models
-    abstract: "[Abstract to be added]"
-    doi: "[DOI link]"
-    pdf: "[PDF link]"
+      - human mobility
+      - pandemic-era mobility
+      - cross-border traffic
+      - mobility data analysis
+    abstract: ""
+    doi: ""
+    pdf: ""
     code: ""
     project: ""
     bibtex: |
-      @article{ijaradar2024placeholder3,
-        title={[Publication Title 3]},
-        author={Ijaradar, Jyotirmaya and [Co-authors]},
-        journal={[Journal Name]},
-        year={2024}
+      @article{sikder2025transition,
+        title={Transition of car-based human-mobility in the pandemic era: Data insight from a cross-border region in Europe},
+        author={Sikder, Sujit Kumar and Ijaradar, Jyotirmaya and Li, Hao and Omrani, Hichem},
+        journal={arXiv preprint arXiv:2509.05166},
+        year={2025}
       }
     featured: false
 
-  - id: pub-placeholder-4
-    title: "[Publication Title 4]"
-    authors: "J. Ijaradar, [Co-authors]"
-    venue: "[Conference Name]"
-    year: 2023
+  - id: richter2024iterative
+    title: "Iterative imputation of incomplete wireless network traffic using adversarial learning and a two-stage approach"
+    authors: "A. Richter, J. Ijaradar, U. Wetzker"
+    venue: "2024 3rd International Conference on Artificial Intelligence For Internet of Things (AIIoT)"
+    year: 2024
     type: conference
     topics:
-      - public transport data analytics
-    abstract: "[Abstract to be added]"
-    doi: "[DOI link]"
-    pdf: "[PDF link]"
+      - time series imputation
+      - adversarial learning
+      - wireless network traffic
+      - artificial intelligence for IoT
+    abstract: ""
+    doi: ""
+    pdf: ""
     code: ""
     project: ""
     bibtex: |
-      @inproceedings{ijaradar2023placeholder4,
-        title={[Publication Title 4]},
-        author={Ijaradar, Jyotirmaya and [Co-authors]},
-        booktitle={[Conference Name]},
-        year={2023}
+      @inproceedings{richter2024iterative,
+        title={Iterative imputation of incomplete wireless network traffic using adversarial learning and a two-stage approach},
+        author={Richter, Anna and Ijaradar, Jyotirmaya and Wetzker, Ulf},
+        booktitle={2024 3rd International Conference on Artificial Intelligence For Internet of Things (AIIoT)},
+        pages={1--6},
+        year={2024},
+        organization={IEEE}
+      }
+    featured: false
+
+  - id: yan2024imputation
+    title: "An imputation-enhanced hybrid deep learning approach for traffic volume prediction in urban networks: a case study in Dresden"
+    authors: "P. Yan, Z. Li, J. Ijaradar, S. Pape, M. Körner, M. Wang"
+    venue: "Data Science for Transportation"
+    year: 2024
+    type: journal
+    topics:
+      - traffic volume prediction
+      - traffic data imputation
+      - hybrid deep learning
+      - urban networks
+      - Dresden
+    abstract: ""
+    doi: ""
+    pdf: ""
+    code: ""
+    project: ""
+    bibtex: |
+      @article{yan2024imputation,
+        title={An imputation-enhanced hybrid deep learning approach for traffic volume prediction in urban networks: a case study in Dresden},
+        author={Yan, Peng and Li, Zirui and Ijaradar, Jyotirmaya and Pape, Sebastian and K{\"o}rner, Matthias and Wang, Meng},
+        journal={Data Science for Transportation},
+        volume={6},
+        number={3},
+        pages={22},
+        year={2024},
+        publisher={Springer Nature Singapore Singapore}
+      }
+    featured: true
+
+  - id: richter2024survey
+    title: "A survey on multivariate time series imputation using adversarial learning"
+    authors: "A. Richter, J. Ijaradar, U. Wetzker, V. Jain, A. Frotzscher"
+    venue: "IEEE Access"
+    year: 2024
+    type: journal
+    topics:
+      - multivariate time series
+      - data imputation
+      - adversarial learning
+      - survey
+    abstract: ""
+    doi: ""
+    pdf: ""
+    code: ""
+    project: ""
+    bibtex: |
+      @article{richter2024survey,
+        title={A survey on multivariate time series imputation using adversarial learning},
+        author={Richter, Anna and Ijaradar, Jyotirmaya and Wetzker, Ulf and Jain, Vineeta and Frotzscher, Andreas},
+        journal={IEEE Access},
+        volume={12},
+        pages={148167--148189},
+        year={2024},
+        publisher={IEEE}
+      }
+    featured: true
+
+  - id: hait2024unlocking
+    title: "Unlocking the potential of lignin: Towards a sustainable solution for tire rubber compound reinforcement"
+    authors: "S. Hait, L. Kumar, J. Ijaradar, A. K. Ghosh, D. De, J. Chanda, P. Ghosh, S. D. Gupta, R. Mukhopadhyay, S. Wießner, et al."
+    venue: "Journal of Cleaner Production"
+    year: 2024
+    type: journal
+    topics:
+      - sustainable materials
+      - lignin
+      - tire rubber compound
+      - cleaner production
+    abstract: ""
+    doi: ""
+    pdf: ""
+    code: ""
+    project: ""
+    bibtex: |
+      @article{hait2024unlocking,
+        title={Unlocking the potential of lignin: Towards a sustainable solution for tire rubber compound reinforcement},
+        author={Hait, Sakrit and Kumar, Labeesh and Ijaradar, Jyotirmaya and Ghosh, Anik Kumar and De, Debapriya and Chanda, Jagannath and Ghosh, Prasenjit and Gupta, Saikat Das and Mukhopadhyay, Rabindra and Wie{\ss}ner, Sven and others},
+        journal={Journal of Cleaner Production},
+        volume={470},
+        pages={143274},
+        year={2024},
+        publisher={Elsevier}
       }
     featured: false
