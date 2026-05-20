@@ -1,147 +1,137 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import StatsBar from '../components/StatsBar.astro';
 import { getTravel, getVolunteering } from '../lib/data';
 
 const travel       = getTravel();
 const volunteering = getVolunteering();
 
 const pageStats = [
-  { value: travel.stats.countries_visited ?? '—', label: 'Countries Visited' },
-  { value: travel.stats.cities_visited ?? '—',    label: 'Cities Visited' },
-  { value: '100+',                                 label: 'Wikipedia Edits' },
-  { value: volunteering.personal_interests?.length ?? '—', label: 'Interests & Hobbies' },
+  { value: travel.stats.countries_visited ?? '—',            label: 'Countries Visited' },
+  { value: travel.stats.cities_visited ?? '—',               label: 'Cities Visited' },
+  { value: '100+',                                            label: 'Wikipedia Edits' },
+  { value: volunteering.personal_interests?.length ?? '—',   label: 'Interests & Hobbies' },
 ];
 ---
 
-<PageLayout title="Beyond Research" description="Travel, photography, community activities, and personal interests of Jyotirmaya Ijaradar.">
+<PageLayout
+  title="Beyond Research"
+  description="Travel, photography, community activities, and personal interests of Jyotirmaya Ijaradar."
+  pageTitle="Beyond Research"
+  pageSubtitle="Travel, photography, community, and personal interests"
+  stats={pageStats}
+>
 
-  <div class="page-header">
-    <div class="max-w-4xl mx-auto">
-      <h1 class="text-3xl font-semibold text-navy-900 dark:text-navy-50 mb-1">Beyond Research</h1>
-      <p class="text-navy-500 dark:text-navy-400">Travel, photography, community, and personal interests</p>
+  <!-- Travel & Exploration -->
+  <section class="mb-14">
+    <h2 class="section-heading">Travel & Exploration</h2>
+
+    <div class="flex flex-wrap gap-4 mb-6">
+      {travel.travel_types.map((tt: any) => (
+        <div class="flex items-center gap-2 text-sm text-navy-600 dark:text-navy-300">
+          <span class="w-3 h-3 rounded-full shrink-0" style={`background-color: ${tt.color}`}></span>
+          {tt.label}
+        </div>
+      ))}
     </div>
-  </div>
 
-  <div class="page-container">
-
-    <StatsBar stats={pageStats} />
-
-    <!-- Travel & Exploration -->
-    <section class="mb-14">
-      <h2 class="section-heading">Travel & Exploration</h2>
-
-      <!-- Travel type legend -->
-      <div class="flex flex-wrap gap-4 mb-6">
-        {travel.travel_types.map((tt: any) => (
-          <div class="flex items-center gap-2 text-sm text-navy-600 dark:text-navy-300">
-            <span class="w-3 h-3 rounded-full shrink-0" style={`background-color: ${tt.color}`}></span>
-            {tt.label}
-          </div>
-        ))}
-      </div>
-
-      <!-- Travel log -->
-      <div class="space-y-2">
-        {travel.entries.map((entry: any) => {
-          const typeInfo = travel.travel_types.find((t: any) => t.id === entry.type) ?? { color: '#94a3b8' };
-          return (
-            <div class="flex items-center gap-4 py-3 border-b border-navy-100 dark:border-navy-800 last:border-0">
-              <span class="w-2.5 h-2.5 rounded-full shrink-0" style={`background-color: ${typeInfo.color}`}></span>
-              <div class="flex-1 min-w-0">
-                <span class="text-sm font-medium text-navy-900 dark:text-navy-50">{entry.city}, {entry.country}</span>
-                {entry.note && <span class="text-xs text-navy-400 dark:text-navy-500 ml-2">— {entry.note}</span>}
-              </div>
-              <span class="text-xs text-navy-400 dark:text-navy-500 shrink-0">{entry.year}</span>
+    <div class="space-y-2">
+      {travel.entries.map((entry: any) => {
+        const typeInfo = travel.travel_types.find((t: any) => t.id === entry.type) ?? { color: '#94a3b8' };
+        return (
+          <div class="flex items-center gap-4 py-3 border-b border-navy-100 dark:border-navy-800 last:border-0">
+            <span class="w-2.5 h-2.5 rounded-full shrink-0" style={`background-color: ${typeInfo.color}`}></span>
+            <div class="flex-1 min-w-0">
+              <span class="text-sm font-medium text-navy-900 dark:text-navy-50">{entry.city}, {entry.country}</span>
+              {entry.note && <span class="text-xs text-navy-400 dark:text-navy-500 ml-2">— {entry.note}</span>}
             </div>
-          );
-        })}
-      </div>
-    </section>
-
-    <!-- Community & Culture -->
-    <section class="mb-14">
-      <h2 class="section-heading">Community & Culture</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {volunteering.community_activities.map((activity: any) => (
-          <div class="card">
-            <h3 class="font-semibold text-navy-900 dark:text-navy-50 mb-2">{activity.title}</h3>
-            <p class="text-sm text-navy-500 dark:text-navy-400">{activity.description}</p>
-            <p class="text-xs text-navy-400 dark:text-navy-500 mt-2">{activity.period}</p>
+            <span class="text-xs text-navy-400 dark:text-navy-500 shrink-0">{entry.year}</span>
           </div>
-        ))}
-      </div>
-    </section>
+        );
+      })}
+    </div>
+  </section>
 
-    <!-- Volunteering -->
-    <section class="mb-14">
-      <h2 class="section-heading">Volunteering</h2>
-      <div class="space-y-4">
-        {volunteering.volunteering.map((vol: any) => (
-          <div class="card flex items-start gap-4">
-            <div class="w-9 h-9 rounded-lg bg-accent-50 dark:bg-accent-950 text-accent-700 dark:text-accent-300 flex items-center justify-center shrink-0">
-              <i class="fa-solid fa-heart text-sm"></i>
-            </div>
-            <div>
-              <h3 class="font-semibold text-navy-900 dark:text-navy-50 text-sm">{vol.title}</h3>
-              <p class="text-sm text-navy-600 dark:text-navy-300">{vol.organization}</p>
-              <p class="text-sm text-navy-500 dark:text-navy-400 mt-1">{vol.description}</p>
-              <p class="text-xs text-navy-400 dark:text-navy-500 mt-1">{vol.period}</p>
-            </div>
+  <!-- Community & Culture -->
+  <section class="mb-14">
+    <h2 class="section-heading">Community & Culture</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {volunteering.community_activities.map((activity: any) => (
+        <div class="card">
+          <h3 class="font-semibold text-navy-900 dark:text-navy-50 mb-2">{activity.title}</h3>
+          <p class="text-sm text-navy-500 dark:text-navy-400">{activity.description}</p>
+          <p class="text-xs text-navy-400 dark:text-navy-500 mt-2">{activity.period}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Volunteering -->
+  <section class="mb-14">
+    <h2 class="section-heading">Volunteering</h2>
+    <div class="space-y-4">
+      {volunteering.volunteering.map((vol: any) => (
+        <div class="card flex items-start gap-4">
+          <div class="w-9 h-9 rounded-lg bg-accent-50 dark:bg-accent-950 text-accent-700 dark:text-accent-300 flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-heart text-sm"></i>
           </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- Professional Memberships -->
-    <section class="mb-14">
-      <h2 class="section-heading">Professional Memberships</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {volunteering.memberships.map((mem: any) => (
-          <div class="card">
-            <div class="flex items-start justify-between mb-2">
-              <h4 class="font-semibold text-navy-900 dark:text-navy-50 text-sm">{mem.title}</h4>
-              <span class="badge text-xs shrink-0 ml-2">{mem.type}</span>
-            </div>
-            <p class="text-xs text-navy-500 dark:text-navy-400">{mem.description}</p>
-            <p class="text-xs text-navy-400 dark:text-navy-500 mt-1">{mem.period}</p>
-            {mem.link && !mem.link.startsWith('[') && (
-              <a href={mem.link} class="btn-ghost text-xs mt-2" target="_blank" rel="noopener">
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> Visit
-              </a>
-            )}
+          <div>
+            <h3 class="font-semibold text-navy-900 dark:text-navy-50 text-sm">{vol.title}</h3>
+            <p class="text-sm text-navy-600 dark:text-navy-300">{vol.organization}</p>
+            <p class="text-sm text-navy-500 dark:text-navy-400 mt-1">{vol.description}</p>
+            <p class="text-xs text-navy-400 dark:text-navy-500 mt-1">{vol.period}</p>
           </div>
-        ))}
-      </div>
-    </section>
+        </div>
+      ))}
+    </div>
+  </section>
 
-    <!-- Photography -->
-    <section class="mb-14">
-      <h2 class="section-heading">Photography</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-        {Array.from({length: 8}).map((_, i) => (
-          <div class="aspect-square rounded-lg bg-navy-100 dark:bg-navy-800 flex items-center justify-center">
-            <i class="fa-solid fa-image text-navy-300 dark:text-navy-600 text-xl"></i>
+  <!-- Professional Memberships -->
+  <section class="mb-14">
+    <h2 class="section-heading">Professional Memberships</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {volunteering.memberships.map((mem: any) => (
+        <div class="card">
+          <div class="flex items-start justify-between mb-2">
+            <h4 class="font-semibold text-navy-900 dark:text-navy-50 text-sm">{mem.title}</h4>
+            <span class="badge text-xs shrink-0 ml-2">{mem.type}</span>
           </div>
-        ))}
-      </div>
-      <p class="text-xs text-navy-400 dark:text-navy-500 mt-3 text-center">
-        Add photos to <code class="font-mono bg-navy-100 dark:bg-navy-800 px-1 rounded">public/images/photography/</code>
-      </p>
-    </section>
+          <p class="text-xs text-navy-500 dark:text-navy-400">{mem.description}</p>
+          <p class="text-xs text-navy-400 dark:text-navy-500 mt-1">{mem.period}</p>
+          {mem.link && !mem.link.startsWith('[') && (
+            <a href={mem.link} class="btn-ghost text-xs mt-2" target="_blank" rel="noopener">
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> Visit
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  </section>
 
-    <!-- Personal Interests -->
-    <section>
-      <h2 class="section-heading">Personal Interests</h2>
-      <div class="flex flex-wrap gap-3">
-        {volunteering.personal_interests.map((interest: string) => (
-          <span class="px-4 py-2 rounded-lg bg-primary-50 dark:bg-primary-950 border border-primary-200 dark:border-primary-800 text-sm text-primary-800 dark:text-primary-200">
-            {interest}
-          </span>
-        ))}
-      </div>
-    </section>
+  <!-- Photography -->
+  <section class="mb-14">
+    <h2 class="section-heading">Photography</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+      {Array.from({length: 8}).map(() => (
+        <div class="aspect-square rounded-lg bg-navy-100 dark:bg-navy-800 flex items-center justify-center">
+          <i class="fa-solid fa-image text-navy-300 dark:text-navy-600 text-xl"></i>
+        </div>
+      ))}
+    </div>
+    <p class="text-xs text-navy-400 dark:text-navy-500 mt-3 text-center">
+      Add photos to <code class="font-mono bg-navy-100 dark:bg-navy-800 px-1 rounded">public/images/photography/</code>
+    </p>
+  </section>
 
-  </div>
+  <!-- Personal Interests -->
+  <section>
+    <h2 class="section-heading">Personal Interests</h2>
+    <div class="flex flex-wrap gap-3">
+      {volunteering.personal_interests.map((interest: string) => (
+        <span class="px-4 py-2 rounded-lg bg-primary-50 dark:bg-primary-950 border border-primary-200 dark:border-primary-800 text-sm text-primary-800 dark:text-primary-200">
+          {interest}
+        </span>
+      ))}
+    </div>
+  </section>
 
 </PageLayout>
