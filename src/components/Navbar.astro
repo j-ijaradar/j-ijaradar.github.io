@@ -3,16 +3,8 @@ const currentPath = Astro.url.pathname;
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/about/', label: 'About' },
-  { href: '/research/', label: 'Research' },
   { href: '/publications/', label: 'Publications' },
-  { href: '/projects/', label: 'Projects' },
-  { href: '/software/', label: 'Software' },
-  { href: '/teaching-supervision/', label: 'Teaching' },
   { href: '/research-notes/', label: 'Notes' },
-  { href: '/beyond-research/', label: 'Beyond' },
-  { href: '/cv/', label: 'CV' },
-  { href: '/contact/', label: 'Contact' },
 ];
 
 function isActive(href: string) {
@@ -21,23 +13,23 @@ function isActive(href: string) {
 }
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-navy-950/80 backdrop-blur-lg border-b border-navy-100 dark:border-navy-800">
-  <nav class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-navy-950/90 backdrop-blur-sm border-b border-navy-100 dark:border-navy-800">
+  <nav class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
     <!-- Logo / Name -->
-    <a href="/" class="font-display font-bold text-lg text-navy-900 dark:text-navy-50 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+    <a href="/" class="font-semibold text-navy-900 dark:text-navy-50 hover:text-primary-700 dark:hover:text-primary-400 transition-colors text-sm tracking-wide">
       J. Ijaradar
     </a>
 
     <!-- Desktop nav -->
-    <div class="hidden lg:flex items-center gap-1">
-      {navLinks.map(link => (
+    <div class="hidden sm:flex items-center gap-6">
+      {navLinks.filter(l => l.href !== '/').map(link => (
         <a
           href={link.href}
           class:list={[
-            'px-3 py-1.5 rounded-lg text-sm font-medium transition-colors duration-200',
+            'text-sm transition-colors duration-200 pb-0.5',
             isActive(link.href)
-              ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-950'
-              : 'text-navy-600 dark:text-navy-400 hover:text-navy-900 dark:hover:text-navy-100 hover:bg-navy-100 dark:hover:bg-navy-800'
+              ? 'text-navy-900 dark:text-navy-50 border-b-2 border-primary-600 dark:border-primary-500'
+              : 'text-navy-500 dark:text-navy-400 hover:text-navy-900 dark:hover:text-navy-100 border-b-2 border-transparent'
           ]}
         >
           {link.label}
@@ -45,28 +37,28 @@ function isActive(href: string) {
       ))}
 
       <!-- Dark mode toggle -->
-      <button id="theme-toggle" class="ml-2 p-2 rounded-lg text-navy-500 dark:text-navy-400 hover:bg-navy-100 dark:hover:bg-navy-800 transition-colors" aria-label="Toggle dark mode">
-        <svg id="moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button id="theme-toggle" class="text-navy-400 dark:text-navy-500 hover:text-navy-700 dark:hover:text-navy-200 transition-colors" aria-label="Toggle dark mode">
+        <svg id="moon-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
         </svg>
-        <svg id="sun-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg id="sun-icon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
         </svg>
       </button>
     </div>
 
     <!-- Mobile: theme toggle + hamburger -->
-    <div class="flex lg:hidden items-center gap-2">
-      <button id="theme-toggle-mobile" class="p-2 rounded-lg text-navy-500 dark:text-navy-400 hover:bg-navy-100 dark:hover:bg-navy-800 transition-colors" aria-label="Toggle dark mode">
-        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div class="flex sm:hidden items-center gap-3">
+      <button id="theme-toggle-mobile" class="text-navy-400 dark:text-navy-500 hover:text-navy-700 dark:hover:text-navy-200 transition-colors" aria-label="Toggle dark mode">
+        <svg class="w-4 h-4 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
         </svg>
-        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
         </svg>
       </button>
-      <button id="mobile-menu-btn" class="p-2 rounded-lg text-navy-600 dark:text-navy-400 hover:bg-navy-100 dark:hover:bg-navy-800 transition-colors" aria-label="Menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button id="mobile-menu-btn" class="text-navy-500 dark:text-navy-400 hover:text-navy-900 dark:hover:text-navy-100 transition-colors" aria-label="Menu">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
@@ -74,16 +66,16 @@ function isActive(href: string) {
   </nav>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden lg:hidden border-t border-navy-100 dark:border-navy-800 bg-white dark:bg-navy-950 px-4 pb-4">
-    <div class="flex flex-col gap-1 pt-2">
+  <div id="mobile-menu" class="hidden sm:hidden border-t border-navy-100 dark:border-navy-800 bg-white dark:bg-navy-950 px-6 py-3">
+    <div class="flex flex-col gap-3">
       {navLinks.map(link => (
         <a
           href={link.href}
           class:list={[
-            'px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+            'text-sm py-1 transition-colors',
             isActive(link.href)
-              ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-950'
-              : 'text-navy-600 dark:text-navy-400 hover:bg-navy-100 dark:hover:bg-navy-800'
+              ? 'text-navy-900 dark:text-navy-50 font-medium'
+              : 'text-navy-500 dark:text-navy-400'
           ]}
         >
           {link.label}
@@ -94,7 +86,6 @@ function isActive(href: string) {
 </header>
 
 <script>
-  // Mobile theme toggle
   document.getElementById('theme-toggle-mobile')?.addEventListener('click', () => {
     document.documentElement.classList.toggle('dark');
     const isDark = document.documentElement.classList.contains('dark');
