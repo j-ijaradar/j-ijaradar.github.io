@@ -35,9 +35,9 @@ publications:
       - urban traffic data
       - deep learning
       - intelligent transportation systems
-    abstract: ""
-    doi: ""
-    pdf: ""
+    abstract: "Detecting traffic anomalies, such as sensor malfunctions and traffic incidents, is crucial to ensuring data accuracy and reliability. However, identifying anomalies in a large urban network is challenging due to the lack of ground truth and the complex spatiotemporal characteristics of traffic data. Traditional methods struggle to differentiate between normal fluctuations and true anomalies. To effectively capture spatial and temporal dependencies, we propose a hybrid deep learning-based autoencoder model, GLA-AE, which integrates Graph Convolutional Networks (GCN), Long Short-Term Memory (LSTM), and a Self-Attention mechanism. To deal with the absence of ground truth, we introduce a data-driven artificial anomaly generation method for evaluation. Our model employs a local thresholding approach for each sensor, ensuring adaptive and robust anomaly detection across diverse traffic patterns. We evaluate GLA-AE on the VAMOS dataset, a large-scale traffic dataset collected from Dresden, Germany. Experimental results demonstrate the model's ability to distinguish between normal traffic variations and true anomalies, and our method outperforms all the baselines."
+    doi: "https://doi.org/10.1109/MT-ITS68460.2025.11223545"
+    pdf: "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11223545"
     code: ""
     project: ""
     bibtex: |
