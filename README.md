@@ -1,6 +1,6 @@
-# Academic Website — Jyotirmaya Ijaradar
+# Jyotirmaya Ijaradar
 
-A personal academic website built with **Astro**, **Tailwind CSS**, and **MDX**. Designed for a traffic data science / AI for mobility researcher.
+A personal website built with **Astro**, **Tailwind CSS**, and **MDX**.
 
 ## Quick Start
 
