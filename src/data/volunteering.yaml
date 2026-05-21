@@ -3,15 +3,15 @@ volunteering:
     title: "Wikipedia Contributor"
     organization: "Wikipedia / Wikimedia"
     description: "Regular Wikipedia editing activity with more than 100 edits. Contributing to knowledge sharing and open information."
-    period: "[Start year – present]"
-    link: "[Wikipedia user page link, if available]"
+    period: "2024 – present"
+    link: "https://en.wikipedia.org/wiki/User:JI_DD"
     icon: wikipedia
 
   - id: bongo-utsav
-    title: "Bongo Utsav Dresden"
-    organization: "Bongo Utsav Dresden"
-    description: "[Description of involvement in Bongo Utsav Dresden cultural activities]"
-    period: "[Period]"
+    title: "Community Activities"
+    organization: "Bongo Utsav Dresden (BUD) e.V."
+    description: ""
+    period: "2022 - 2026"
     link: ""
     icon: community
 
@@ -20,35 +20,22 @@ memberships:
     title: "Wikimedia Deutschland e.V."
     type: "Community Membership"
     description: "Member of Wikimedia Deutschland e.V., supporting free knowledge and open data."
-    period: "[Year – present]"
+    period: "2026 – present"
     link: "https://www.wikimedia.de/"
 
   - id: ieee
     title: "IEEE"
-    type: "Professional Membership"
-    description: "Member of the Institute of Electrical and Electronics Engineers (IEEE)."
-    period: "[Year – present]"
+    type: "Student Membership"
+    description: "Student member of the Institute of Electrical and Electronics Engineers (IEEE)."
+    period: "2023 – present"
     link: "https://www.ieee.org/"
 
   - id: ieee-its
     title: "IEEE Intelligent Transportation Systems Society"
-    type: "Professional Membership"
-    description: "Member or affiliated with the IEEE Intelligent Transportation Systems Society (ITSS)."
-    period: "[Year – present]"
+    type: "Student Membership"
+    description: "Student member or affiliated with the IEEE Intelligent Transportation Systems Society (ITSS)."
+    period: "2023 – present"
     link: "https://www.ieee-itss.org/"
-
-  - id: other-membership
-    title: "[Other Professional/Community Membership]"
-    type: "[Type]"
-    description: "[Description to be added]"
-    period: "[Period]"
-    link: ""
-
-community_activities:
-  - id: cultural-events
-    title: "Cultural Events & Community Engagement"
-    description: "[Description of cultural activities, community events, and engagement in Dresden or elsewhere]"
-    period: "[Period]"
 
 personal_interests:
   - "Travelling and exploring new cities"
