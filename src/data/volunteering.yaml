@@ -37,6 +37,19 @@ memberships:
     period: "2023 – present"
     link: "https://www.ieee-itss.org/"
 
+community_activities:
+  - id: bongo-utsav-treasurer
+    organization: "Bongo Utsav Dresden (BUD) e.V."
+    role: "Treasurer"
+    period: "2022 – 2023"
+    description: "Supported financial coordination and organizational activities for Bengali cultural and community events in Dresden."
+
+  - id: bongo-utsav-general-secretary
+    organization: "Bongo Utsav Dresden (BUD) e.V."
+    role: "General Secretary"
+    period: "2024 – 2025"
+    description: "Supported organizational coordination, community communication, event planning, and cultural engagement activities."
+
 personal_interests:
   - "Travelling and exploring new cities"
   - "Photography — urban, travel, and event photography"
