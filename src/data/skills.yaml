@@ -7,37 +7,10 @@ technical:
         level: "Intermediate"
       - name: "SQL"
         level: "Intermediate"
-      - name: "[Other languages]"
-        level: "[Level]"
-
-  - category: "Machine Learning & Deep Learning"
-    skills:
-      - name: "PyTorch"
-        level: "Advanced"
-      - name: "scikit-learn"
-        level: "Advanced"
-      - name: "TensorFlow"
+      - name: "Vue"
         level: "Intermediate"
-      - name: "[Other ML/DL tools]"
-        level: "[Level]"
-
-  - category: "Data Science & Visualization"
-    skills:
-      - name: "pandas / NumPy"
-        level: "Advanced"
-      - name: "Matplotlib / Plotly"
-        level: "Advanced"
-      - name: "Streamlit"
+      - name: "Vue"
         level: "Intermediate"
-      - name: "[Other tools]"
-        level: "[Level]"
-
-  - category: "Traffic & Transport Tools"
-    skills:
-      - name: "[Traffic simulation / analysis tools]"
-        level: "[Level]"
-      - name: "[Other domain tools]"
-        level: "[Level]"
 
   - category: "Development Tools"
     skills:
@@ -51,11 +24,11 @@ technical:
         level: "Advanced"
 
 languages:
-  - name: "[Language 1]"
-    level: "[Native / Fluent / Intermediate]"
+  - name: "Bengali"
+    level: "Native"
   - name: "English"
-    level: "[Fluent / Proficient]"
+    level: "Fluent"
   - name: "German"
-    level: "[Level]"
-  - name: "[Other languages]"
-    level: "[Level]"
+    level: "Beginner"
+  - name: "Hindi"
+    level: "Fluent"
