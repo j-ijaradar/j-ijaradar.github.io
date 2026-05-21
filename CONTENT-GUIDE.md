@@ -498,7 +498,9 @@ Use an empty list (`community_activities: []`) if you have nothing to add yet.
 community_activities:
   - id: local-event
     title: "IndIIT Dresden"
-    description: "Organiser for the annual Indian cultural event in Dresden."
+    organization: "IndIIT Dresden e.V."   # shown if different from title; omit if same
+    role: "Organiser"                     # shown as a badge; omit if not applicable
+    description: "Annual Indian cultural event in Dresden."
     period: "2022 – present"
 ```
 
