@@ -491,6 +491,9 @@ memberships:
 
 ### Community activities
 
+**Required key** — the Beyond Research page always expects this list to exist.
+Use an empty list (`community_activities: []`) if you have nothing to add yet.
+
 ```yaml
 community_activities:
   - id: local-event
