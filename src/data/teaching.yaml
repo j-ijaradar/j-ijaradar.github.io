@@ -1,57 +1,54 @@
 courses:
   - id: applied-robotics-ccam
     title: "Applied Robotics and Control for Cooperative and Autonomous Mobility"
-    role: "[Lecturer / Teaching Assistant / Co-Instructor]"
-    semester: "[Semester, e.g., Winter 2024/25]"
-    institution: "[University]"
-    description: "Course covering applied robotics concepts, control theory, and cooperative autonomous mobility systems."
-    materials: "[Link to course materials, if available]"
+    role: "Lecturer"
+    semester: "Summer 2026"
+    institution: "Dresden University of Technology"
+    description: "This course introduces the fundamental principles of autonomous and cooperative driving systems through a combination of theory and hands-on experimentation with mobile robots in a scaled laboratory environment. Students learn how autonomous vehicles perceive their surroundings, make decisions, collaborate with other traffic participants, and act safely within a shared traffic space. The course covers key aspects of traffic phenomena such as safety, congestion, and emissions, along with the architecture of modern autonomous driving systems, including sensors, control algorithms, and communication technologies, with practical examples such as Cooperative Adaptive Cruise Control (CACC)."
+    materials: "https://bildungsportal.sachsen.de/opal/auth/RepositoryEntry/53827993603"
 
-  - id: traffic-data-science
-    title: "Traffic Data Science / Traffic Analytics"
-    role: "[Lecturer / Teaching Assistant]"
-    semester: "[Semester]"
-    institution: "[University]"
-    description: "Topics in traffic data collection, processing, visualization, imputation, and predictive analytics."
-    materials: "[Link to course materials, if available]"
+  - id: road-traffic-control
+    title: "Technologies of Road Traffic Control"
+    role: "Teaching Assistant"
+    semester: "Winter 2025/26"
+    institution: "Dresden University of Technology"
+    description: "The course covers the theoretical principles of traffic flow and practical applications for traffic control. Students will be able to independently generate, test, and evaluate the performance of traffic control systems. In addition to controlling individual systems, students will master coordinated and traffic-dependent control systems in practical environments. Students will gain knowledge of procedures and methods for higher-level control systems that encompass road networks."
+    materials: "https://bildungsportal.sachsen.de/opal/auth/RepositoryEntry/13918699524"
 
-  - id: other-teaching
-    title: "[Other Teaching Activities]"
-    role: "[Role]"
-    semester: "[Semester]"
-    institution: "[University]"
-    description: "[Description to be added]"
+  - id: optimal-control
+    title: "Optimal Control, Methods and Procedures of Decision Making"
+    role: "Teaching Assistant"
+    semester: "Winter 2024/25"
+    institution: "Dresden University of Technology"
+    description: ""
     materials: ""
 
 supervision:
   bachelor_theses:
-    - title: "[Bachelor Thesis Title 1]"
-      student: "[Student Name]"
-      year: "[Year]"
-      status: "[Completed / Ongoing]"
-    - title: "[Bachelor Thesis Title 2]"
-      student: "[Student Name]"
-      year: "[Year]"
-      status: "[Completed / Ongoing]"
+    - title: "Origin Destination Matrix estimation using Traffic Count Data in Dresden"
+      student: "Alexander Thies"
+      year: "2025"
+      status: "Completed"
 
   master_theses:
-    - title: "[Master Thesis Title 1]"
-      student: "[Student Name]"
-      year: "[Year]"
-      status: "[Completed / Ongoing]"
-    - title: "[Master Thesis Title 2]"
-      student: "[Student Name]"
-      year: "[Year]"
-      status: "[Completed / Ongoing]"
-
+    - title: "Short-Term Vehicular Traffic Prediction in Dresden: A Comparative Study of Hybrid Deep Learning Approaches"
+      student: "Malay Gaherwar Singh"
+      year: "2025"
+      status: "Completed"
+      
   student_projects:
-    - title: "[Student Research Project Title]"
-      student: "[Student Name]"
-      year: "[Year]"
-      status: "[Completed / Ongoing]"
+    - title: "A Data Preprocessing Framework for Public Transport Arrival Time Prediction"
+      student: "Suqi Li"
+      year: "2026"
+      status: "Ongoing"
 
   shk_tutor:
-    - name: "[SHK/Tutor Name]"
-      role: "[Role, e.g., Student Research Assistant]"
-      period: "[Period]"
-      topic: "[Topic/Task]"
+    - name: "Yongqi Xiang"
+      role: "Student Research Assistant"
+      period: "Dec, 2025 - Apr, 2026"
+      topic: "Development of Traffic Insight 360 tool"
+      
+    - name: "Qi Liu"
+      role: "Tutor/ Student Research Assistant"
+      period: "Apr, 2026 - Sep, 2026"
+      topic: "Tutor of ARCCAM course"

@@ -1,50 +1,11 @@
-thesis_topics:
-  - id: topic-1
-    title: "[Thesis Topic: Deep Learning for Traffic Data Imputation]"
-    type: "Master Thesis"
-    description: "[Description of the thesis topic, research questions, and expected outcomes]"
-    requirements: "[Required skills and background]"
-    status: available
-    contact: "[your.email@institution.de]"
+thesis_topics: []
 
-  - id: topic-2
-    title: "[Thesis Topic: Anomaly Detection in Urban Traffic Streams]"
-    type: "Master Thesis"
-    description: "[Description to be added]"
-    requirements: "[Required skills]"
-    status: available
-    contact: "[your.email@institution.de]"
 
-  - id: topic-3
-    title: "[Thesis Topic: Public Transport Data Analytics]"
-    type: "Bachelor Thesis"
-    description: "[Description to be added]"
-    requirements: "[Required skills]"
-    status: available
-    contact: "[your.email@institution.de]"
+research_assistant_topics: []
 
-research_assistant_topics:
-  - id: ra-topic-1
-    title: "[Research Assistant Topic: Data Pipeline Development]"
-    description: "[Description of tasks and expected contributions]"
-    requirements: "[Required skills: Python, data engineering]"
-    hours: "[Hours per week]"
-    status: available
-    contact: "[your.email@institution.de]"
 
-mini_projects:
-  - id: mini-1
-    title: "[Mini Project: Traffic Data Visualization Dashboard]"
-    description: "[Short project description for student mini-projects or course projects]"
-    duration: "[Duration, e.g., 4–6 weeks]"
-    status: available
+mini_projects: []
 
-software_dev_topics:
-  - id: sw-topic-1
-    title: "[Software Topic: TrafficInsight360 Feature Development]"
-    description: "[Description of software development tasks]"
-    tech_stack:
-      - Python
-      - PyTorch
-    status: available
-    contact: "[your.email@institution.de]"
+
+software_dev_topics: []
+
