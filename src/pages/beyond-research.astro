@@ -51,6 +51,28 @@ const pageStats = [
     </div>
   </section>
 
+    <!-- Professional Memberships -->
+  <section class="mb-14">
+    <h2 class="section-heading">Professional Memberships</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {volunteering.memberships.map((mem: any) => (
+        <div class="card">
+          <div class="flex items-start justify-between mb-2">
+            <h4 class="font-semibold text-navy-900 dark:text-navy-50 text-sm">{mem.title}</h4>
+            <span class="badge text-xs shrink-0 ml-2">{mem.type}</span>
+          </div>
+          <p class="text-xs text-navy-500 dark:text-navy-400">{mem.description}</p>
+          <p class="text-xs text-navy-400 dark:text-navy-500 mt-1">{mem.period}</p>
+          {mem.link && !mem.link.startsWith('[') && (
+            <a href={mem.link} class="btn-ghost text-xs mt-2" target="_blank" rel="noopener">
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> Visit
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  </section>
+
   <!-- Community & Culture -->
   <section class="mb-14">
     <h2 class="section-heading">Community & Culture</h2>
@@ -81,28 +103,6 @@ const pageStats = [
             <p class="text-sm text-navy-500 dark:text-navy-400 mt-1">{vol.description}</p>
             <p class="text-xs text-navy-400 dark:text-navy-500 mt-1">{vol.period}</p>
           </div>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- Professional Memberships -->
-  <section class="mb-14">
-    <h2 class="section-heading">Professional Memberships</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {volunteering.memberships.map((mem: any) => (
-        <div class="card">
-          <div class="flex items-start justify-between mb-2">
-            <h4 class="font-semibold text-navy-900 dark:text-navy-50 text-sm">{mem.title}</h4>
-            <span class="badge text-xs shrink-0 ml-2">{mem.type}</span>
-          </div>
-          <p class="text-xs text-navy-500 dark:text-navy-400">{mem.description}</p>
-          <p class="text-xs text-navy-400 dark:text-navy-500 mt-1">{mem.period}</p>
-          {mem.link && !mem.link.startsWith('[') && (
-            <a href={mem.link} class="btn-ghost text-xs mt-2" target="_blank" rel="noopener">
-              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> Visit
-            </a>
-          )}
         </div>
       ))}
     </div>
