@@ -18,10 +18,9 @@ links:
   researchgate: "https://www.researchgate.net/profile/Jyotirmaya_Ijaradar"
 
 bio_short: >
-  I am a researcher working at the intersection of traffic data science, artificial intelligence, 
-  and intelligent mobility systems. My work focuses on developing data-driven methods for understanding, 
-  imputing, detecting anomalies in, and forecasting traffic data using spatiotemporal deep learning approaches.
-
+  I am a Research Associate at TU Dresden, working at the intersection of machine learning and intelligent transportation systems. My research focuses on developing data-driven AI solutions for traffic prediction, anomaly detection, and large-scale sensor data analysis.
+  I combine rigorous research with practical software development, building end-to-end frameworks that bridge academic methods and real-world applications. Scalability and deployability matter to me just as much as methodological novelty — my work doesn't stop at a published paper.
+  I work extensively with machine learning and deep learning techniques applied to spatiotemporal traffic data and urban infrastructure challenges. What drives me is a genuine curiosity for emerging methods and a commitment to solving problems where advanced computation can create tangible impact in cities. I am always open to collaborations and conversations around AI for mobility, urban data science, or applied machine learning.
 bio_long: >
   My research sits at the intersection of transportation engineering and data science. I develop 
   computational methods for traffic data imputation, anomaly detection, and forecasting, leveraging 
